@@ -1,0 +1,11 @@
+Simple tests:
+
+time find /opt/SPMcode/testdir/files -type f -print0 | xargs -0 -n 4 -P 20 pigz -k -m -p 40
+
+- find -print0 / xargs -0 protects you from whitespace in filenames
+- xargs -n 1 means one gzip process per file
+- xargs -P specifies the number of jobs
+
+time find /opt/SPMcode/testdir/files -name "*.txt" -print0 | xargs -0 -n 4 -P 20 ./ffc_farm -C 0 -n 40
+
+
