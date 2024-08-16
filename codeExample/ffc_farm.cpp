@@ -86,7 +86,6 @@
 #include <worker.hpp>
 #include <writer.hpp>
 
-
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         usage(argv[0]);

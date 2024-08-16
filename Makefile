@@ -12,7 +12,7 @@ CXXFLAGS  	= -DFF_BOUNDED_BUFFER -DDEFAULT_BUFFER_CAPACITY=512
 LDFLAGS 	= -pthread
 OPTFLAGS	= -O3 -ffast-math -DNDEBUG
 
-TARGETS		= compdecomp \
+TARGETS		= sequential \
 		  ffc_farm
 
 .PHONY: all clean cleanall
@@ -24,7 +24,7 @@ TARGETS		= compdecomp \
 
 all		: $(TARGETS)
 
-compdecomp	: compdecomp.cpp utility.hpp
+sequential	: sequential.cpp utility.hpp
 	$(CXX) $(INCLUDES) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c
 
 #ffc_farm       : ffc_farm.cpp utility.hpp cmdline.hpp datatask.hpp reader.hpp worker.hpp writer.hpp

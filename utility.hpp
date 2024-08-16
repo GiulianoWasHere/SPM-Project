@@ -39,7 +39,7 @@
 
 #include <iostream>
 
-#define SUFFIX ".zip"
+#define SUFFIX ".miniz"
 #define BUF_SIZE (1024 * 1024)
 
 // global variables with their default values -------------------------------------------------
@@ -319,8 +319,9 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	compressedFileLength += headerSize;
 	unsigned char *ptrOut = new unsigned char[compressedFileLength];
 
-	std::fprintf(stderr, "Number of blocks : %zu \n", numberOfBlocks);
-	std::fprintf(stderr, "infile_size: %zu \n", infile_size);
+	//std::fprintf(stderr, "Number of blocks : %zu \n", numberOfBlocks);
+	//std::fprintf(stderr, "infile_size: %zu \n", infile_size);
+
 	// size of file
 	memcpy(ptrOut, &infile_size, sizeof(size_t));
 	// number of blocks
@@ -329,12 +330,12 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	size_t numberOfBlocks2;
 	memcpy(&numberOfBlocks2, ptrOut + sizeOfT, sizeof(size_t));
 
-	std::fprintf(stderr, "Number of blocks2 : %zu \n\n", numberOfBlocks2);
+	// std::fprintf(stderr, "Number of blocks2 : %zu \n\n", numberOfBlocks2);
 	// std::fprintf(stderr, "infile size : %zu \n",*ptrOut);
 	// std::fprintf(stderr, "blocks numers: %zu \n\n",*(ptrOut + sizeof(size_t)));
+	//std::fprintf(stderr, "header size : %zu \n\n", headerSize);
 
 	// Total bytes written after the header
-	std::fprintf(stderr, "header size : %zu \n\n", headerSize);
 	size_t tot = headerSize;
 
 	for (size_t i = 0; i < fullblocks; ++i)
@@ -346,6 +347,8 @@ static inline int compressFile(const char fname[], size_t infile_size,
 			if (QUITE_MODE >= 1)
 				std::fprintf(stderr, "Failed to compress file in memory\n");
 			// Cleaning memory
+			unmapFile(ptr, infile_size);
+			delete[] ptrOut;
 			return -1;
 		}
 		tot += cmp_len;
@@ -365,27 +368,31 @@ static inline int compressFile(const char fname[], size_t infile_size,
 			if (QUITE_MODE >= 1)
 				std::fprintf(stderr, "Failed to compress file in memory\n");
 			// Cleaning memory
+			unmapFile(ptr, infile_size);
+			delete[] ptrOut;
 			return -1;
 		}
 
 		tot += cmp_len;
 
-		size_t blocksize;
-		std::fprintf(stderr, "len chunk : %zu \n", cmp_len);
+		//size_t blocksize;
+		//std::fprintf(stderr, "len chunk : %zu \n", cmp_len);
 
-		memcpy(&blocksize, ptrOut + sizeOfT * (fullblocks + 2), sizeof(size_t));
-		std::fprintf(stderr, "before blocksize : %zu \n", blocksize);
+		//memcpy(&blocksize, ptrOut + sizeOfT * (fullblocks + 2), sizeof(size_t));
+		//std::fprintf(stderr, "before blocksize : %zu \n", blocksize);
+
+
 		// Putting on the header the compressed dimension of the block
 		memcpy(ptrOut + sizeOfT * (fullblocks + 2), &cmp_len, sizeof(size_t));
 
-		memcpy(&blocksize, ptrOut + sizeOfT * (fullblocks + 2), sizeof(size_t));
-		std::fprintf(stderr, "blocksize : %zu \n", blocksize);
+		//memcpy(&blocksize, ptrOut + sizeOfT * (fullblocks + 2), sizeof(size_t));
+		//std::fprintf(stderr, "blocksize : %zu \n", blocksize);
 	}
 
-	numberOfBlocks2 = 0;
-	memcpy(&numberOfBlocks2, ptrOut + sizeOfT, sizeof(size_t));
+	//numberOfBlocks2 = 0;
+	//memcpy(&numberOfBlocks2, ptrOut + sizeOfT, sizeof(size_t));
 
-	std::fprintf(stderr, "Number of blocks2 : %zu \n\n", numberOfBlocks2);
+	//std::fprintf(stderr, "Number of blocks2 : %zu \n\n", numberOfBlocks2);
 
 	// write the compressed data into disk
 	bool success = writeFile(outfilename, ptrOut, tot);
@@ -602,11 +609,13 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 {
 	// define the output file name
 	const std::string infilename(fname);
+
 	// If the file doesn't end with zip it skips the file
-	if(!infilename.ends_with(".miniz"))
-	{
-		return 0;
-	}
+	
+	// ************RIMETTERE*****************************
+	//VISUAL STUDIO ERROR BUT WITH C++ 20 it is good! 
+	if(!infilename.ends_with(".miniz")) return 0;
+
 	//Remove the .miniz
 	std::string outfilename = infilename.substr(0, infilename.size()-6);
 
@@ -625,23 +634,25 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	}
 	outfilename = tempFileName;
 
-	std::fprintf(stderr, "%s \n", outfilename.c_str());
+	//std::fprintf(stderr, "%s \n", outfilename.c_str());
+
 	size_t sizeOfT = sizeof(size_t);
 	unsigned char *ptr = nullptr;
 	if (!mapFile(fname, infile_size, ptr))
 		return -1;
 
-	std::fprintf(stderr, "file size: %zu \n", infile_size);
+	//std::fprintf(stderr, "file size: %zu \n", infile_size);
 	// Size of the uncompressed file taken from the header
 	size_t uncompressedFileSize;
 	memcpy(&uncompressedFileSize, ptr, sizeof(size_t));
 
-	std::fprintf(stderr, "uncompressedFileSize : %zu \n", uncompressedFileSize);
-	// Number of blocks taken from header
+	//std::fprintf(stderr, "uncompressedFileSize : %zu \n", uncompressedFileSize);
 
+	// Number of blocks taken from header
 	size_t numberOfBlocks;
 	memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
-	std::fprintf(stderr, "number of Blocks: %zu \n", numberOfBlocks);
+
+	//std::fprintf(stderr, "number of Blocks: %zu \n", numberOfBlocks);
 
 	unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
 
@@ -654,14 +665,18 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	{
 		unsigned char *blockPointer = ptrOut + tot;
 		size_t sizeUncompBlock;
+		//Get the size of the block from the header of the file
 		memcpy(&sizeUncompBlock, ptr + sizeOfT * (i + 2), sizeof(size_t));
-		std::fprintf(stderr, "size Uncomp Block: %zu \n", sizeUncompBlock);
+
+		//std::fprintf(stderr, "size Uncomp Block: %zu \n", sizeUncompBlock);
 		unsigned long cmp_len = BIGFILE_LOW_THRESHOLD + BIGFILE_LOW_THRESHOLD;
 		if (uncompress((ptrOut + tot), &cmp_len, (const unsigned char *)(ptr + readBytes), sizeUncompBlock) != MZ_OK)
 		{
 			if (QUITE_MODE >= 1)
 				std::fprintf(stderr, "Failed to compress file in memory\n");
-			// Cleaning memory
+				// Cleaning memory
+				unmapFile(ptr, infile_size);
+				delete[] ptrOut;
 			return -1;
 		}
 		readBytes += sizeUncompBlock;
