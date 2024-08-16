@@ -600,6 +600,11 @@ dcpError:
 	return -1;
 }
 
+static inline bool ends_with(const std::string& str, const std::string& suffix)
+{
+  return str.size() >= suffix.size() && str.compare(str.size()-suffix.size(), suffix.size(), suffix) == 0;
+}
+
 inline bool existsFile (const std::string& name) {
   struct stat buffer;   
   return (stat (name.c_str(), &buffer) == 0); 
@@ -614,7 +619,7 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	
 	// ************RIMETTERE*****************************
 	//VISUAL STUDIO ERROR BUT WITH C++ 20 it is good! 
-	//if(!infilename.ends_with(".miniz")) return 0;
+	if(!ends_with(infilename,".miniz")) return 0;
 
 	//Remove the .miniz
 	std::string outfilename = infilename.substr(0, infilename.size()-6);

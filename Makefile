@@ -13,7 +13,7 @@ LDFLAGS 	= -pthread
 OPTFLAGS	= -O3 -ffast-math -DNDEBUG
 
 TARGETS		= sequential \
-		  ffc_farm
+		  ffa2a
 
 .PHONY: all clean cleanall
 .SUFFIXES: .cpp 
@@ -26,6 +26,9 @@ all		: $(TARGETS)
 
 sequential	: sequential.cpp utility.hpp
 	$(CXX) $(INCLUDES) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c
+
+ffa2a	: ffa2a.cpp utility.hpp
+	$(CXX) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
 
 #ffc_farm       : ffc_farm.cpp utility.hpp cmdline.hpp datatask.hpp reader.hpp worker.hpp writer.hpp
 #	$(CXX) $(CXXFLAGS) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
