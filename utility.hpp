@@ -614,7 +614,7 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	
 	// ************RIMETTERE*****************************
 	//VISUAL STUDIO ERROR BUT WITH C++ 20 it is good! 
-	if(!infilename.ends_with(".miniz")) return 0;
+	//if(!infilename.ends_with(".miniz")) return 0;
 
 	//Remove the .miniz
 	std::string outfilename = infilename.substr(0, infilename.size()-6);
