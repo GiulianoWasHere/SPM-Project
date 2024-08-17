@@ -188,11 +188,15 @@ struct L_Worker : ff_monode_t<Task_t>
       //serve la size del blocco 
       //Id del file 
       //AGGIUNGERE nel FileVECTOR un numero per contare i numeri di blocchi Arrivati, magari anche un vettore per tenere i puntatori dei blocchi compressi
+
       for (size_t i = 0; i < fullblocks; ++i)
       {
+        unsigned char *ptrWorker = ptr + BIGFILE_LOW_THRESHOLD * i;
+        Task_t *t = new Task_t(infilename);
       }
       if (partialblock)
       {
+        unsigned char *ptrWorker = ptr + BIGFILE_LOW_THRESHOLD * fullblocks + partialblock;
       }
     }
     return EOS;
