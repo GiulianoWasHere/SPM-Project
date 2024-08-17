@@ -144,6 +144,7 @@ struct Task_t
   size_t cmp_size = 0;             // output size
   size_t blockid = 1;              // block identifier (for "BIG files")
   size_t nblocks = 1;              // #blocks in which a "BIG file" is split
+  size_t idFile = 0;               // Id of the file in the FileVector
   const std::string filename;      // source file name
 };
 struct L_Worker : ff_monode_t<Task_t>
@@ -158,8 +159,8 @@ struct L_Worker : ff_monode_t<Task_t>
     // the files are divided for each worker
     for (size_t i = 0; i < numberOfTasks; ++i)
     {
-      const std::string infilename(FilesVector[id + i*NumberOfLWorkers].filename);
-      size_t infile_size = FilesVector[id + i*NumberOfLWorkers].size;
+      const std::string infilename(FilesVector[id + i * NumberOfLWorkers].filename);
+      size_t infile_size = FilesVector[id + i * NumberOfLWorkers].size;
       size_t sizeOfT = sizeof(size_t);
 
       unsigned char *ptr = nullptr;
@@ -171,10 +172,28 @@ struct L_Worker : ff_monode_t<Task_t>
 
       const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
       const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
-      
+      size_t numberOfBlocks = fullblocks;
       // Estimate of the length of the compressed file
       unsigned long compressedFileLength = mz_compressBound(BIGFILE_LOW_THRESHOLD * fullblocks + partialblock);
       // ff_send_out(new Task_t(FilesVector[id + i*NumberOfLWorkers].filename));
+
+      if (partialblock)
+        numberOfBlocks++;
+
+      // add the header size
+      size_t tot = 0;
+
+      //Mandare i blocchi ad ogni reader
+      //Creando oggetto task
+      //serve la size del blocco 
+      //Id del file 
+      //AGGIUNGERE nel FileVECTOR un numero per contare i numeri di blocchi Arrivati, magari anche un vettore per tenere i puntatori dei blocchi compressi
+      for (size_t i = 0; i < fullblocks; ++i)
+      {
+      }
+      if (partialblock)
+      {
+      }
     }
     return EOS;
   }
