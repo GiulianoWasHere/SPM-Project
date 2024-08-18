@@ -27,9 +27,8 @@ struct FileStruct
 {
   std::string filename;
   size_t size;
-  // This variable is used from the Writer to keep track of the block received
-  // std::atomic<int> numberOfBlocksReceived{0};
   // In this array the pointer of the blocks are stored
+  size_t *sizeOfBlocks;
   unsigned char **arrayOfPointers;
 };
 
@@ -156,6 +155,56 @@ static inline void printTask(Task_t *in)
   std::cout << "-----------------------------" << std::endl;
 }
 
+static inline bool writeToDisk(Task_t *in, std::vector<std::atomic<int>> &vectorOfCounters)
+{
+  size_t idFile = in->idFile;
+  //Add the 
+  FilesVector[idFile].arrayOfPointers[in->blockid] = in->ptrOut;
+  FilesVector[idFile].sizeOfBlocks[in->blockid] = in->cmp_size;
+  int val = vectorOfCounters[idFile].fetch_add(1);
+
+  if (val >= in->nblocks - 1)
+  {
+    std::cout << "Input Size: " << val << std::endl;
+    size_t sizeOfT = sizeof(size_t);
+    size_t nBlocks = in->nblocks;
+    unsigned char *ptrHeader = new unsigned char[sizeOfT * (in->nblocks + 2)];
+    // size of file
+    memcpy(ptrHeader, &in->size, sizeof(size_t));
+    // number of blocks
+    memcpy(ptrHeader + sizeOfT, &nBlocks, sizeof(size_t));
+    for (size_t i = 0; i < nBlocks; ++i)
+    {
+      memcpy(ptrHeader + sizeOfT * (i + 2), &FilesVector[idFile].sizeOfBlocks[i], sizeof(size_t));
+    }
+
+    std::string outfilename = std::string(in->filename) + SUFFIX;
+    FILE *pOutfile = fopen(outfilename.c_str(), "wb");
+    if (!pOutfile)
+    {
+      if (QUITE_MODE >= 1)
+      {
+        perror("fopen");
+        std::fprintf(stderr, "Failed opening output file %s!\n", outfilename.c_str());
+        return false;
+      }
+    }
+    //Write header
+    if (fwrite(ptrHeader, 1, sizeOfT * (nBlocks + 2), pOutfile) != sizeOfT * (nBlocks + 2))
+    {
+      if (QUITE_MODE >= 1)
+      {
+        perror("fwrite");
+        std::fprintf(stderr, "Failed writing to output file %s\n", outfilename.c_str());
+      }
+      return false;
+    }
+    
+    if (fclose(pOutfile) != 0)
+      return false;
+    return true;
+  }
+}
 struct MultiInputHelperNode : ff::ff_minode_t<Task_t>
 {
   Task_t *svc(Task_t *in)
@@ -171,8 +220,8 @@ struct L_Worker : ff_monode_t<Task_t>
 
   Task_t *svc(Task_t *in)
   {
-    //IF THE INPUT IS NULL WE ARE AT THE BEGINNING AND
-    //WE ARE JUST SPLITTING THE WORK BETWEEN THE WORKERS
+    // IF THE INPUT IS NULL WE ARE AT THE BEGINNING AND
+    // WE ARE JUST SPLITTING THE WORK BETWEEN THE WORKERS
     if (in == nullptr)
     {
       // Based on the Id (The id is given at the creation of the node)
@@ -194,9 +243,12 @@ struct L_Worker : ff_monode_t<Task_t>
         const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
         const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
         size_t numberOfBlocks = fullblocks;
-        FilesVector[idFile].arrayOfPointers = new unsigned char*[numberOfBlocks];
+
         if (partialblock)
           numberOfBlocks++;
+
+        FilesVector[idFile].arrayOfPointers = new unsigned char *[numberOfBlocks];
+        FilesVector[idFile].sizeOfBlocks = new size_t[numberOfBlocks];
 
         for (size_t j = 0; j < fullblocks; ++j)
         {
@@ -227,16 +279,10 @@ struct L_Worker : ff_monode_t<Task_t>
     }
     else
     {
-      //WRITE TO DISK
-      size_t idFile = in->idFile;
-      FilesVector[idFile].arrayOfPointers[in->blockid] = in->ptrOut;
-      int val = vectorOfCounters[idFile].fetch_add(1);
-      if(val >= in->nblocks-1)
-        std::cout << "Input Size: " << val << std::endl;
+      // WRITE TO DISK
+
       return GO_ON;
     }
-
-    
   }
   std::vector<std::atomic<int>> &vectorOfCounters;
   size_t id;
@@ -250,8 +296,20 @@ struct R_Worker : ff_monode_t<Task_t>
   Task_t *svc(Task_t *in)
   {
     // SendToWriter
-    //printTask(in);
+    // printTask(in);
     size_t estimation = compressBound(in->cmp_size);
+    unsigned char *ptrCompress = new unsigned char[estimation];
+    if (compress((ptrCompress), &estimation, in->ptrOut, in->cmp_size) != Z_OK)
+    {
+      if (QUITE_MODE >= 1)
+        std::fprintf(stderr, "Failed to compress file in memory\n");
+      // Cleaning memory
+      // unmapFile(ptr, infile_size);
+      // delete[] ptrOut;
+      return GO_ON;
+    }
+    in->cmp_size = estimation;
+    in->ptrOut = ptrCompress;
     ff_send_out(in);
     return GO_ON;
   }

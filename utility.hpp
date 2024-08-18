@@ -287,7 +287,7 @@ static inline int compressFile(const char fname[], size_t infile_size,
 {
 	// define the output file name
 	const std::string infilename(fname);
-	std::string outfilename = std::string(fname) + ".miniz";
+	std::string outfilename = std::string(fname) + SUFFIX;
 
 	size_t sizeOfT = sizeof(size_t);
 	unsigned char *ptr = nullptr;
@@ -327,9 +327,6 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	memcpy(ptrOut, &infile_size, sizeof(size_t));
 	// number of blocks
 	memcpy(ptrOut + sizeOfT, &numberOfBlocks, sizeof(size_t));
-
-	size_t numberOfBlocks2;
-	memcpy(&numberOfBlocks2, ptrOut + sizeOfT, sizeof(size_t));
 
 	// std::fprintf(stderr, "Number of blocks2 : %zu \n\n", numberOfBlocks2);
 	// std::fprintf(stderr, "infile size : %zu \n",*ptrOut);
@@ -620,7 +617,7 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	
 	// ************RIMETTERE*****************************
 	//VISUAL STUDIO ERROR BUT WITH C++ 20 it is good! 
-	if(!ends_with(infilename,".miniz")) return 0;
+	if(!ends_with(infilename,SUFFIX)) return 0;
 
 	//Remove the .miniz
 	std::string outfilename = infilename.substr(0, infilename.size()-6);
