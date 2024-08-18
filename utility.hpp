@@ -297,8 +297,7 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
 	const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
 
-	// Estimate of the length of the compressed file
-	unsigned long compressedFileLength = mz_compressBound(BIGFILE_LOW_THRESHOLD * fullblocks + partialblock);
+	
 
 	size_t headerSize = 0;
 	// Add one long for the size of the uncompressed file
@@ -315,6 +314,8 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	else
 		headerSize += sizeOfT * fullblocks;
 
+	// Estimate of the length of the compressed file
+	unsigned long compressedFileLength = mz_compressBound(BIGFILE_LOW_THRESHOLD) * numberOfBlocks;
 	// add the header size
 	compressedFileLength += headerSize;
 	unsigned char *ptrOut = new unsigned char[compressedFileLength];

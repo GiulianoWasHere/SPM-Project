@@ -29,6 +29,10 @@ struct FileStruct
 {
   std::string filename;
   size_t size;
+  // This variable is used from the Writer to keep track of the block received
+  size_t numberOfBlocksReceived = 0;
+  // In this array the pointer of the blocks are stored
+  unsigned char **arrayOfPointers;
 };
 static inline bool addFileToVector(const char fname[], size_t size, const bool comp, std::vector<FileStruct> &FilesVector)
 {
@@ -121,18 +125,6 @@ static inline void usage(const char *argv0)
   printf("D - Like d but remove the input file\n");
   printf("--------------------\n");
 }
-/* struct Task_t {
-    Task_t(unsigned char *ptr, size_t size, const std::string &name):
-        ptr(ptr),size(size),filename(name) {}
-
-    unsigned char    *ptr;           // input pointer
-    size_t            size;          // input size
-    unsigned char    *ptrOut=nullptr;// output pointer
-    size_t            cmp_size=0;    // output size
-    size_t            blockid=1;     // block identifier (for "BIG files")
-    size_t            nblocks=1;     // #blocks in which a "BIG file" is split
-    const std::string filename;      // source file name
-}; */
 
 struct Task_t
 {
@@ -147,6 +139,25 @@ struct Task_t
   size_t idFile = 0;               // Id of the file in the FileVector
   const std::string filename;      // source file name
 };
+
+static inline void printTask(Task_t *in)
+{
+  std::cout << "Filename: " << in->filename << std::endl;
+  //std::cout << "Input Pointer: " << static_cast<void*>(in->ptr) << std::endl;
+  //std::cout << "Output Pointer: " << static_cast<void*>(in->ptrOut) << std::endl;
+  std::cout << "Input Size: " << in->size << std::endl;
+  std::cout << "Output Size: " << in->cmp_size << std::endl;
+  std::cout << "Block ID: " << in->blockid << std::endl;
+  std::cout << "#Blocks: " << in->nblocks << std::endl;
+  std::cout << "File ID: " << in->idFile << std::endl;
+  std::cout << "-----------------------------" << std::endl;
+}
+
+struct MultiInputHelperNode : ff::ff_minode_t<Task_t> {
+  Task_t* svc(Task_t* in) {
+    return in;
+  }
+};
 struct L_Worker : ff_monode_t<Task_t>
 { // must be multi-output
 
@@ -159,8 +170,9 @@ struct L_Worker : ff_monode_t<Task_t>
     // the files are divided for each worker
     for (size_t i = 0; i < numberOfTasks; ++i)
     {
-      const std::string infilename(FilesVector[id + i * NumberOfLWorkers].filename);
-      size_t infile_size = FilesVector[id + i * NumberOfLWorkers].size;
+      size_t idFile = id + i * NumberOfLWorkers;
+      const std::string infilename(FilesVector[idFile].filename);
+      size_t infile_size = FilesVector[idFile].size;
       size_t sizeOfT = sizeof(size_t);
 
       unsigned char *ptr = nullptr;
@@ -173,30 +185,33 @@ struct L_Worker : ff_monode_t<Task_t>
       const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
       const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
       size_t numberOfBlocks = fullblocks;
-      // Estimate of the length of the compressed file
-      unsigned long compressedFileLength = mz_compressBound(BIGFILE_LOW_THRESHOLD * fullblocks + partialblock);
-      // ff_send_out(new Task_t(FilesVector[id + i*NumberOfLWorkers].filename));
 
       if (partialblock)
         numberOfBlocks++;
 
-      // add the header size
-      size_t tot = 0;
-
-      //Mandare i blocchi ad ogni reader
-      //Creando oggetto task
-      //serve la size del blocco 
-      //Id del file 
-      //AGGIUNGERE nel FileVECTOR un numero per contare i numeri di blocchi Arrivati, magari anche un vettore per tenere i puntatori dei blocchi compressi
-
-      for (size_t i = 0; i < fullblocks; ++i)
+      for (size_t j = 0; j < fullblocks; ++j)
       {
-        unsigned char *ptrWorker = ptr + BIGFILE_LOW_THRESHOLD * i;
         Task_t *t = new Task_t(infilename);
+        t->blockid = j;
+        t->idFile = idFile;
+        t->nblocks = numberOfBlocks;
+        t->ptr = ptr;
+        t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * j;
+        t->size = infile_size;
+        t->cmp_size = BIGFILE_LOW_THRESHOLD;
+        ff_send_out(t);
       }
       if (partialblock)
       {
-        unsigned char *ptrWorker = ptr + BIGFILE_LOW_THRESHOLD * fullblocks + partialblock;
+        Task_t *t = new Task_t(infilename);
+        t->blockid = fullblocks;
+        t->idFile = idFile;
+        t->nblocks = numberOfBlocks;
+        t->ptr = ptr;
+        t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * numberOfBlocks;
+        t->size = infile_size;
+        t->cmp_size = partialblock;
+        ff_send_out(t);
       }
     }
     return EOS;
@@ -212,8 +227,10 @@ struct R_Worker : ff_minode_t<Task_t>
   R_Worker(const size_t Lw) : Lw(Lw) {}
   Task_t *svc(Task_t *in)
   {
-    std::cout << in->filename << "\n";
     // SendToWriter
+    printTask(in);
+
+
     return GO_ON;
   }
   const size_t Lw;
