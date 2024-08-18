@@ -13,6 +13,7 @@
 //      prime by using the is_prime function
 //
 
+#include <atomic>
 #include <cmath>
 #include <string>
 #include <vector>
@@ -21,19 +22,21 @@
 #include <ff/all2all.hpp>
 using namespace ff;
 #include <utility.hpp>
-// ------------ GLOBAL VARIBLES ---------------
-size_t vectorSize = 0;
-// ------------ END GLOBAL VARIBLES ---------------
 
 struct FileStruct
 {
   std::string filename;
   size_t size;
   // This variable is used from the Writer to keep track of the block received
-  size_t numberOfBlocksReceived = 0;
+  // std::atomic<int> numberOfBlocksReceived{0};
   // In this array the pointer of the blocks are stored
   unsigned char **arrayOfPointers;
 };
+
+// ------------ GLOBAL VARIBLES ---------------
+std::vector<FileStruct> FilesVector;
+// ------------ END GLOBAL VARIBLES ---------------
+
 static inline bool addFileToVector(const char fname[], size_t size, const bool comp, std::vector<FileStruct> &FilesVector)
 {
   const std::string infilename(fname);
@@ -143,8 +146,8 @@ struct Task_t
 static inline void printTask(Task_t *in)
 {
   std::cout << "Filename: " << in->filename << std::endl;
-  //std::cout << "Input Pointer: " << static_cast<void*>(in->ptr) << std::endl;
-  //std::cout << "Output Pointer: " << static_cast<void*>(in->ptrOut) << std::endl;
+  // std::cout << "Input Pointer: " << static_cast<void*>(in->ptr) << std::endl;
+  // std::cout << "Output Pointer: " << static_cast<void*>(in->ptrOut) << std::endl;
   std::cout << "Input Size: " << in->size << std::endl;
   std::cout << "Output Size: " << in->cmp_size << std::endl;
   std::cout << "Block ID: " << in->blockid << std::endl;
@@ -153,84 +156,103 @@ static inline void printTask(Task_t *in)
   std::cout << "-----------------------------" << std::endl;
 }
 
-struct MultiInputHelperNode : ff::ff_minode_t<Task_t> {
-  Task_t* svc(Task_t* in) {
+struct MultiInputHelperNode : ff::ff_minode_t<Task_t>
+{
+  Task_t *svc(Task_t *in)
+  {
     return in;
   }
 };
 struct L_Worker : ff_monode_t<Task_t>
 { // must be multi-output
 
-  L_Worker(std::vector<FileStruct> &FilesVector, size_t id, size_t numberOfTasks, size_t NumberOfLWorkers)
-      : FilesVector(FilesVector), id(id), numberOfTasks(numberOfTasks), NumberOfLWorkers(NumberOfLWorkers) {}
+  L_Worker(std::vector<std::atomic<int>> &vectorOfCounters, size_t id, size_t numberOfTasks, size_t NumberOfLWorkers)
+      : vectorOfCounters(vectorOfCounters), id(id), numberOfTasks(numberOfTasks), NumberOfLWorkers(NumberOfLWorkers) {}
 
-  Task_t *svc(Task_t *)
+  Task_t *svc(Task_t *in)
   {
-    // Based on the Id (The id is given at the creation of the node)
-    // the files are divided for each worker
-    for (size_t i = 0; i < numberOfTasks; ++i)
+    //IF THE INPUT IS NULL WE ARE AT THE BEGINNING AND
+    //WE ARE JUST SPLITTING THE WORK BETWEEN THE WORKERS
+    if (in == nullptr)
     {
-      size_t idFile = id + i * NumberOfLWorkers;
-      const std::string infilename(FilesVector[idFile].filename);
-      size_t infile_size = FilesVector[idFile].size;
-      size_t sizeOfT = sizeof(size_t);
-
-      unsigned char *ptr = nullptr;
-      if (!mapFile(infilename.c_str(), infile_size, ptr))
+      // Based on the Id (The id is given at the creation of the node)
+      // the files are divided for each worker
+      for (size_t i = 0; i < numberOfTasks; ++i)
       {
-        success = false;
-        continue;
-      }
+        size_t idFile = id + i * NumberOfLWorkers;
+        const std::string infilename(FilesVector[idFile].filename);
+        size_t infile_size = FilesVector[idFile].size;
+        size_t sizeOfT = sizeof(size_t);
 
-      const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
-      const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
-      size_t numberOfBlocks = fullblocks;
+        unsigned char *ptr = nullptr;
+        if (!mapFile(infilename.c_str(), infile_size, ptr))
+        {
+          success = false;
+          continue;
+        }
 
-      if (partialblock)
-        numberOfBlocks++;
+        const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
+        const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
+        size_t numberOfBlocks = fullblocks;
+        FilesVector[idFile].arrayOfPointers = new unsigned char*[numberOfBlocks];
+        if (partialblock)
+          numberOfBlocks++;
 
-      for (size_t j = 0; j < fullblocks; ++j)
-      {
-        Task_t *t = new Task_t(infilename);
-        t->blockid = j;
-        t->idFile = idFile;
-        t->nblocks = numberOfBlocks;
-        t->ptr = ptr;
-        t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * j;
-        t->size = infile_size;
-        t->cmp_size = BIGFILE_LOW_THRESHOLD;
-        ff_send_out(t);
+        for (size_t j = 0; j < fullblocks; ++j)
+        {
+          Task_t *t = new Task_t(infilename);
+          t->blockid = j;
+          t->idFile = idFile;
+          t->nblocks = numberOfBlocks;
+          t->ptr = ptr;
+          t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * j;
+          t->size = infile_size;
+          t->cmp_size = BIGFILE_LOW_THRESHOLD;
+          ff_send_out(t);
+        }
+        if (partialblock)
+        {
+          Task_t *t = new Task_t(infilename);
+          t->blockid = fullblocks;
+          t->idFile = idFile;
+          t->nblocks = numberOfBlocks;
+          t->ptr = ptr;
+          t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * numberOfBlocks;
+          t->size = infile_size;
+          t->cmp_size = partialblock;
+          ff_send_out(t);
+        }
       }
-      if (partialblock)
-      {
-        Task_t *t = new Task_t(infilename);
-        t->blockid = fullblocks;
-        t->idFile = idFile;
-        t->nblocks = numberOfBlocks;
-        t->ptr = ptr;
-        t->ptrOut = ptr + BIGFILE_LOW_THRESHOLD * numberOfBlocks;
-        t->size = infile_size;
-        t->cmp_size = partialblock;
-        ff_send_out(t);
-      }
+      return EOS;
     }
-    return EOS;
+    else
+    {
+      //WRITE TO DISK
+      size_t idFile = in->idFile;
+      FilesVector[idFile].arrayOfPointers[in->blockid] = in->ptrOut;
+      int val = vectorOfCounters[idFile].fetch_add(1);
+      if(val >= in->nblocks-1)
+        std::cout << "Input Size: " << val << std::endl;
+      return GO_ON;
+    }
+
+    
   }
-  std::vector<FileStruct> FilesVector;
+  std::vector<std::atomic<int>> &vectorOfCounters;
   size_t id;
   size_t numberOfTasks;
   size_t NumberOfLWorkers;
   bool success = true;
 };
-struct R_Worker : ff_minode_t<Task_t>
+struct R_Worker : ff_monode_t<Task_t>
 { // must be multi-input
   R_Worker(const size_t Lw) : Lw(Lw) {}
   Task_t *svc(Task_t *in)
   {
     // SendToWriter
-    printTask(in);
-
-
+    //printTask(in);
+    size_t estimation = compressBound(in->cmp_size);
+    ff_send_out(in);
     return GO_ON;
   }
   const size_t Lw;
@@ -268,7 +290,7 @@ int main(int argc, char *argv[])
     return -1;
   }
   bool dir = false;
-  std::vector<FileStruct> FilesVector;
+  // std::vector<FileStruct> FilesVector;
 
   // Walks in the directory and add the filenames in the FileVector
   if (S_ISDIR(statbuf.st_mode))
@@ -280,12 +302,7 @@ int main(int argc, char *argv[])
     success &= addFileToVector(argv[2], statbuf.st_size, compressing, FilesVector);
   }
 
-  /* vectorSize = FilesVector.size();
-  for (FileStruct i : FilesVector)
-    std::cout << i.filename << i.size << "\n";
-
-  std::cout << FilesVector[0].filename << "\n";
-  std::cout << vectorSize << "\n"; */
+  std::vector<std::atomic<int>> vectorOfCounters(FilesVector.size());
 
   std::vector<ff_node *> LW;
   std::vector<ff_node *> RW;
@@ -295,19 +312,20 @@ int main(int argc, char *argv[])
   {
     if (overflowTasks)
     {
-      LW.push_back(new L_Worker(FilesVector, i, numberTasks + 1, Lw));
+      LW.push_back(new ff::ff_comb(new MultiInputHelperNode, new L_Worker(vectorOfCounters, i, numberTasks + 1, Lw)));
       overflowTasks--;
     }
     else
-      LW.push_back(new L_Worker(FilesVector, i, numberTasks, Lw));
+      LW.push_back(new ff::ff_comb(new MultiInputHelperNode, new L_Worker(vectorOfCounters, i, numberTasks, Lw)));
   }
   for (size_t i = 0; i < Rw; ++i)
-    RW.push_back(new R_Worker(Lw));
+    RW.push_back(new ff::ff_comb(new MultiInputHelperNode, new R_Worker(Lw)));
 
   // Adding Lworkers and Rworkers to a2a
   ff_a2a a2a;
   a2a.add_firstset(LW);
   a2a.add_secondset(RW);
+  a2a.wrap_around();
 
   if (a2a.run_and_wait_end() < 0)
   {
