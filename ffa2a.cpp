@@ -151,11 +151,13 @@ static inline void printTask(Task_t *in)
   std::cout << "Filename: " << in->filename << std::endl;
   // std::cout << "Input Pointer: " << static_cast<void*>(in->ptr) << std::endl;
   // std::cout << "Output Pointer: " << static_cast<void*>(in->ptrOut) << std::endl;
-  std::cout << "Input Size: " << in->size << std::endl;
-  std::cout << "Output Size: " << in->cmp_size << std::endl;
+  std::cout << "Size: " << in->size << std::endl;
+  std::cout << "Cmp Size: " << in->cmp_size << std::endl;
   std::cout << "Block ID: " << in->blockid << std::endl;
   std::cout << "#Blocks: " << in->nblocks << std::endl;
   std::cout << "File ID: " << in->idFile << std::endl;
+  std::cout << "readBytes: " << in->readBytes << std::endl;
+  std::cout << "uncompressed File Size: " << in->uncompreFileSize << std::endl;
   std::cout << "-----------------------------" << std::endl;
 }
 
@@ -329,7 +331,7 @@ struct L_Worker : ff_monode_t<Task_t>
             t->size = infile_size;
             t->readBytes = bytesRead;
             memcpy(&t->cmp_size, ptr + sizeOfT * (j + 2), sizeof(size_t));
-            bytesRead += t->cmp_size;
+            bytesRead = bytesRead + t->cmp_size;
             ff_send_out(t);
           }
         }
@@ -372,6 +374,7 @@ struct L_Worker : ff_monode_t<Task_t>
         int val = vectorOfCounters[idFile].fetch_add(1);
         if (val >= in->nblocks - 1)
         {
+          printTask(in);
           const std::string infilename(in->filename);
           std::string outfilename = infilename.substr(0, infilename.size() - 6);
 
@@ -390,9 +393,9 @@ struct L_Worker : ff_monode_t<Task_t>
           }
           outfilename = tempFileName;
 
-          bool success = writeFile(outfilename, in->ptrOut - in->readBytes, in->size);
-          unmapFile(in->ptr, in->uncompreFileSize);
-          delete [] (in->ptrOut - in->readBytes);
+          bool success = writeFile(outfilename,in->ptrOut, in->uncompreFileSize);
+          unmapFile(in->ptr, in->size);
+          delete [] in->ptrOut;
         }
       }
       return GO_ON;
@@ -431,7 +434,7 @@ struct R_Worker : ff_monode_t<Task_t>
     }
     else //***********DECOMPRESSING********
     {
-      size_t cmp_len = BIGFILE_LOW_THRESHOLD + BIGFILE_LOW_THRESHOLD;
+      size_t cmp_len = BIGFILE_LOW_THRESHOLD;
       if (mz_uncompress((in->ptrOut + in->blockid * BIGFILE_LOW_THRESHOLD), &cmp_len, (const unsigned char *)(in->ptr + in->readBytes), in->cmp_size) != MZ_OK)
       {
         if (QUITE_MODE >= 1)
