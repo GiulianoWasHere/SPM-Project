@@ -35,6 +35,7 @@ struct FileStruct
 // ------------ GLOBAL VARIBLES ---------------
 std::vector<FileStruct> FilesVector;
 bool compressing = false;
+bool success = true;
 // ------------ END GLOBAL VARIBLES ---------------
 
 static inline bool addFileToVector(const char fname[], size_t size, const bool comp, std::vector<FileStruct> &FilesVector)
@@ -140,6 +141,8 @@ struct Task_t
   size_t blockid = 1;              // block identifier (for "BIG files")
   size_t nblocks = 1;              // #blocks in which a "BIG file" is split
   size_t idFile = 0;               // Id of the file in the FileVector
+  size_t readBytes = 0;            // Used in the decompression to understand where each worker has to start
+  size_t uncompreFileSize = 0;     // Size of the uncompressed file
   const std::string filename;      // source file name
 };
 
@@ -243,6 +246,7 @@ struct L_Worker : ff_monode_t<Task_t>
           unsigned char *ptr = nullptr;
           if (!mapFile(infilename.c_str(), infile_size, ptr))
           {
+            std::fprintf(stderr, "Failed to mapFile\n");
             success = false;
             continue;
           }
@@ -285,7 +289,7 @@ struct L_Worker : ff_monode_t<Task_t>
       }
       else //***********DECOMPRESSING********
       {
-        /* for (size_t i = 0; i < numberOfTasks; ++i)
+        for (size_t i = 0; i < numberOfTasks; ++i)
         {
           size_t idFile = id + i * NumberOfLWorkers;
           const std::string infilename(FilesVector[idFile].filename);
@@ -295,10 +299,40 @@ struct L_Worker : ff_monode_t<Task_t>
           unsigned char *ptr = nullptr;
           if (!mapFile(infilename.c_str(), infile_size, ptr))
           {
+            std::fprintf(stderr, "Failed to mapFile\n");
             success = false;
             continue;
           }
-        } */
+
+          // Size of the uncompressed file
+          size_t uncompressedFileSize;
+          memcpy(&uncompressedFileSize, ptr, sizeof(size_t));
+
+          // Number of blocks taken from header
+          size_t numberOfBlocks;
+          memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
+
+          unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
+
+          size_t headerSize = sizeOfT * (numberOfBlocks + 2);
+          size_t bytesRead = headerSize;
+          for (size_t j = 0; j < numberOfBlocks; ++j)
+          {
+            Task_t *t = new Task_t(infilename);
+            t->blockid = j;
+            t->idFile = idFile;
+            t->nblocks = numberOfBlocks;
+            t->ptr = ptr;
+            t->ptrOut = ptrOut;
+            // In size we have the uncompressed this time
+            t->uncompreFileSize = uncompressedFileSize;
+            t->size = infile_size;
+            t->readBytes = bytesRead;
+            memcpy(&t->cmp_size, ptr + sizeOfT * (j + 2), sizeof(size_t));
+            bytesRead += t->cmp_size;
+            ff_send_out(t);
+          }
+        }
       }
       return EOS;
     }
@@ -317,8 +351,11 @@ struct L_Worker : ff_monode_t<Task_t>
         {
 
           if (!writeToDisk(in, vectorOfCounters))
+          {
             std::fprintf(stderr, "Problems in the writing of the file.\n");
-          return GO_ON;
+            success = false;
+            return GO_ON;
+          }
           // Cleaning memory
           for (size_t i = 0; i < in->nblocks; ++i)
           {
@@ -328,6 +365,36 @@ struct L_Worker : ff_monode_t<Task_t>
           unmapFile(in->ptr, in->size);
         }
       }
+      else
+      {
+        size_t idFile = in->idFile;
+        // Using an atomic to check when all the blocks have been decompressed
+        int val = vectorOfCounters[idFile].fetch_add(1);
+        if (val >= in->nblocks - 1)
+        {
+          const std::string infilename(in->filename);
+          std::string outfilename = infilename.substr(0, infilename.size() - 6);
+
+          // if the file exist in the directory it will add 1,2,3..
+          int a = 1;
+          std::string tempFileName = outfilename;
+          while (existsFile(tempFileName))
+          {
+            tempFileName = outfilename;
+            size_t pos = outfilename.find(".");
+            if (pos == std::string::npos)
+              tempFileName = outfilename + std::to_string(a);
+            else
+              tempFileName = tempFileName.insert(pos, std::to_string(a));
+            a++;
+          }
+          outfilename = tempFileName;
+
+          bool success = writeFile(outfilename, in->ptrOut - in->readBytes, in->size);
+          unmapFile(in->ptr, in->uncompreFileSize);
+          delete [] (in->ptrOut - in->readBytes);
+        }
+      }
       return GO_ON;
     }
   }
@@ -335,7 +402,6 @@ struct L_Worker : ff_monode_t<Task_t>
   size_t id;
   size_t numberOfTasks;
   size_t NumberOfLWorkers;
-  bool success = true;
 };
 struct R_Worker : ff_monode_t<Task_t>
 { // must be multi-input
@@ -353,6 +419,7 @@ struct R_Worker : ff_monode_t<Task_t>
       {
         if (QUITE_MODE >= 1)
           std::fprintf(stderr, "Failed to compress file in memory\n");
+        success = false;
         // Cleaning memory
         // unmapFile(ptr, infile_size);
         // delete[] ptrOut;
@@ -360,6 +427,21 @@ struct R_Worker : ff_monode_t<Task_t>
       }
       in->cmp_size = estimation;
       in->ptrOut = ptrCompress;
+      ff_send_out(in);
+    }
+    else //***********DECOMPRESSING********
+    {
+      size_t cmp_len = BIGFILE_LOW_THRESHOLD + BIGFILE_LOW_THRESHOLD;
+      if (mz_uncompress((in->ptrOut + in->blockid * BIGFILE_LOW_THRESHOLD), &cmp_len, (const unsigned char *)(in->ptr + in->readBytes), in->cmp_size) != MZ_OK)
+      {
+        if (QUITE_MODE >= 1)
+          std::fprintf(stderr, "Failed to decompress file in memory\n");
+        success = false;
+        // Cleaning memory
+        // unmapFile(ptr, infile_size);
+        // delete[] ptrOut;
+        return GO_ON;
+      }
       ff_send_out(in);
     }
     return GO_ON;
@@ -390,7 +472,6 @@ int main(int argc, char *argv[])
   std::cout << Rw << "\n";
   std::cout << argv[2] << "\n";
 
-  bool success = true;
   struct stat statbuf;
   if (stat(argv[2], &statbuf) == -1)
   {
