@@ -44,7 +44,9 @@
 
 // global variables with their default values -------------------------------------------------
 static bool comp = true;					   // by default, it compresses
-static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes threshold
+//static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes threshold
+//static size_t BIGFILE_LOW_THRESHOLD = 1048576; // 1Mbyte
+static size_t BIGFILE_LOW_THRESHOLD = 4194304; // 4Mbyte
 static bool REMOVE_ORIGIN = false;			   // Does it keep the origin file?
 static int QUITE_MODE = 1;					   // 0 silent, 1 only errors, 2 everything
 static bool RECUR = false;					   // do we have to process the contents of subdirs?
@@ -338,7 +340,6 @@ static inline int compressFile(const char fname[], size_t infile_size,
 
 	for (size_t i = 0; i < fullblocks; ++i)
 	{
-		unsigned char *blockPointer = ptrOut + tot;
 		size_t cmp_len = compressBound(BIGFILE_LOW_THRESHOLD);
 		if (compress((ptrOut + tot), &cmp_len, (const unsigned char *)(ptr + BIGFILE_LOW_THRESHOLD * i), BIGFILE_LOW_THRESHOLD) != Z_OK)
 		{
@@ -359,7 +360,6 @@ static inline int compressFile(const char fname[], size_t infile_size,
 	}
 	if (partialblock)
 	{
-		unsigned char *blockPointer = ptrOut + tot;
 		size_t cmp_len = compressBound(partialblock);
 		if (compress((ptrOut + tot), &cmp_len, (const unsigned char *)(ptr + BIGFILE_LOW_THRESHOLD * fullblocks), partialblock) != Z_OK)
 		{
@@ -666,7 +666,6 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	size_t readBytes = headerSize;
 	for (size_t i = 0; i < numberOfBlocks; ++i)
 	{
-		unsigned char *blockPointer = ptrOut + tot;
 		size_t sizeUncompBlock;
 		//Get the size of the block from the header of the file
 		memcpy(&sizeUncompBlock, ptr + sizeOfT * (i + 2), sizeof(size_t));

@@ -326,7 +326,6 @@ struct L_Worker : ff_monode_t<Task_t>
             t->nblocks = numberOfBlocks;
             t->ptr = ptr;
             t->ptrOut = ptrOut;
-            // In size we have the uncompressed this time
             t->uncompreFileSize = uncompressedFileSize;
             t->size = infile_size;
             t->readBytes = bytesRead;
@@ -374,7 +373,6 @@ struct L_Worker : ff_monode_t<Task_t>
         int val = vectorOfCounters[idFile].fetch_add(1);
         if (val >= in->nblocks - 1)
         {
-          printTask(in);
           const std::string infilename(in->filename);
           std::string outfilename = infilename.substr(0, infilename.size() - 6);
 
@@ -434,15 +432,13 @@ struct R_Worker : ff_monode_t<Task_t>
     }
     else //***********DECOMPRESSING********
     {
+      //The decompression is done in the same unsigned char *, each worker won't touch the other's memory
       size_t cmp_len = BIGFILE_LOW_THRESHOLD;
       if (mz_uncompress((in->ptrOut + in->blockid * BIGFILE_LOW_THRESHOLD), &cmp_len, (const unsigned char *)(in->ptr + in->readBytes), in->cmp_size) != MZ_OK)
       {
         if (QUITE_MODE >= 1)
           std::fprintf(stderr, "Failed to decompress file in memory\n");
         success = false;
-        // Cleaning memory
-        // unmapFile(ptr, infile_size);
-        // delete[] ptrOut;
         return GO_ON;
       }
       ff_send_out(in);
@@ -471,9 +467,6 @@ int main(int argc, char *argv[])
 
   const size_t Lw = std::stol(argv[3]);
   const size_t Rw = std::stol(argv[4]);
-
-  std::cout << Rw << "\n";
-  std::cout << argv[2] << "\n";
 
   struct stat statbuf;
   if (stat(argv[2], &statbuf) == -1)
