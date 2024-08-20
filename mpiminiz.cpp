@@ -50,7 +50,7 @@ static inline bool addFileToVector(const char fname[], size_t size, const bool c
   return true;
 }
 
-static inline bool walkDirff(const char dname[], const bool comp, std::vector<FileStruct> &FilesVector)
+static inline bool walkDirMpi(const char dname[], const bool comp, std::vector<FileStruct> &FilesVector)
 {
   if (chdir(dname) == -1)
   {
@@ -89,7 +89,7 @@ static inline bool walkDirff(const char dname[], const bool comp, std::vector<Fi
     {
       if (!isdot(file->d_name))
       {
-        if (walkDirff(file->d_name, comp, FilesVector))
+        if (walkDirMpi(file->d_name, comp, FilesVector))
         {
           if (!chdir(".."))
           {
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
   // Walks in the directory and add the filenames in the FileVector
   if (S_ISDIR(statbuf.st_mode))
   {
-    success &= walkDirff(argv[2], compressing, FilesVector);
+    success &= walkDirMpi(argv[2], compressing, FilesVector);
   }
   else
   {

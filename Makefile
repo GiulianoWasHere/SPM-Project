@@ -15,7 +15,8 @@ OPTFLAGS	= -O3 -ffast-math -DNDEBUG
 
 TARGETS		= sequential \
 		  ffa2a \
-		  mpi
+		  mpiminiz \
+		  generateTxt
 
 .PHONY: all clean cleanall
 .SUFFIXES: .cpp 
@@ -34,6 +35,10 @@ ffa2a	: ffa2a.cpp utility.hpp
 
 mpi	: mpi.cpp utility.hpp
 	$(CXX) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
+
+generateTxt : generateTxt.cpp
+	$(CXX) $(OPTFLAGS) -o $@ $< 
+	
 
 #ffc_farm       : ffc_farm.cpp utility.hpp cmdline.hpp datatask.hpp reader.hpp worker.hpp writer.hpp
 #	$(CXX) $(CXXFLAGS) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
