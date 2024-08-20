@@ -22,6 +22,7 @@
 #include <ff/all2all.hpp>
 using namespace ff;
 #include <utility.hpp>
+#include <mpi.h>
 
 struct FileStruct
 {

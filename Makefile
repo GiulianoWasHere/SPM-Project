@@ -7,6 +7,7 @@ MPI_ROOT		= ${HOME}/mpi
 endif
 
 CXX		= g++ -std=c++20
+CXXMPI  = mpicxx -std=c++20
 INCLUDES	= -I . -I miniz
 CXXFLAGS  	= -DFF_BOUNDED_BUFFER -DDEFAULT_BUFFER_CAPACITY=512
 
@@ -33,8 +34,8 @@ sequential	: sequential.cpp utility.hpp
 ffa2a	: ffa2a.cpp utility.hpp
 	$(CXX) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
 
-mpi	: mpi.cpp utility.hpp
-	$(CXX) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
+mpiminiz	: mpiminiz.cpp utility.hpp
+	$(CXXMPI) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c -fopenmp $(LDFLAGS)
 
 generateTxt : generateTxt.cpp
 	$(CXX) $(OPTFLAGS) -o $@ $< 
