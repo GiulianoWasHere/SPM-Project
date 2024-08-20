@@ -131,12 +131,37 @@ static inline void usage(const char *argv0)
   printf("--------------------\n");
 }
 
-
 int main(int argc, char *argv[])
 {
+  int provided;
+  int flag;
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_MULTIPLE, &provided);
+  MPI_Is_thread_main(&flag);
+  if (!flag)
+  {
+    std::printf("This thread called MPI_Init_thread but it is not the main thread\n");
+    MPI_Abort(MPI_COMM_WORLD, -1);
+    return -1;
+  }
+  int claimed;
+  MPI_Query_thread(&claimed);
+  if (claimed != provided)
+  {
+    std::printf("MPI_THREAD_MULTIPLE not provided\n");
+    MPI_Abort(MPI_COMM_WORLD, -1);
+    return -1;
+  }
+  int numP;
+  int myId;
+
+  // Get the number of processes
+  MPI_Comm_rank(MPI_COMM_WORLD, &myId);
+  MPI_Comm_size(MPI_COMM_WORLD, &numP);
+
   if (argc < 5)
   {
     usage(argv[0]);
+    MPI_Abort(MPI_COMM_WORLD, -1);
     return -1;
   }
   const char *pMode = argv[1];
@@ -144,6 +169,7 @@ int main(int argc, char *argv[])
   {
     printf("Invalid option!\n\n");
     usage(argv[0]);
+    MPI_Abort(MPI_COMM_WORLD, -1);
     return -1;
   }
   compressing = ((pMode[0] == 'c') || (pMode[0] == 'C'));
@@ -157,26 +183,98 @@ int main(int argc, char *argv[])
   {
     perror("stat");
     fprintf(stderr, "Error: stat %s\n", argv[argc]);
+    MPI_Abort(MPI_COMM_WORLD, -1);
     return -1;
   }
   bool dir = false;
   // std::vector<FileStruct> FilesVector;
 
   // Walks in the directory and add the filenames in the FileVector
-  if (S_ISDIR(statbuf.st_mode))
+  if (!myId)
   {
-    success &= walkDirMpi(argv[2], compressing, FilesVector);
+    if (S_ISDIR(statbuf.st_mode))
+    {
+      success &= walkDirMpi(argv[2], compressing, FilesVector);
+    }
+    else
+    {
+      success &= addFileToVector(argv[2], statbuf.st_size, compressing, FilesVector);
+    }
+
+    size_t sizeVector = FilesVector.size();
+#pragma omp parallel for
+    for (int i = 0; i < sizeVector; ++i)
+    {
+      size_t idFile = i;
+      const std::string infilename(FilesVector[idFile].filename);
+      size_t infile_size = FilesVector[idFile].size;
+      size_t sizeOfT = sizeof(size_t);
+
+      unsigned char *ptr = nullptr;
+      if (!mapFile(infilename.c_str(), infile_size, ptr))
+      {
+        std::fprintf(stderr, "Failed to mapFile\n");
+        success = false;
+        continue;
+      }
+
+      MPI_UNSIGNED_CHAR;
+
+      const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
+      const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
+      size_t numberOfBlocks = fullblocks;
+      if (partialblock)
+        numberOfBlocks++;
+
+      std::vector<int> counts(numP);
+      std::vector<int> displs(numP);
+      for (int j = 0; j < numP; ++j)
+      {
+        auto start = (fullblocks * j / numP);
+        auto end = (fullblocks * (j+1) / numP);
+        counts[j] = end - start;
+        displs[j] = start;
+      }
+      size_t count = 0;
+      for (int j = 0; j < counts.size(); j++)
+      {
+        std::cout << counts[j] * BIGFILE_LOW_THRESHOLD << std::endl;
+        count += counts[j]* BIGFILE_LOW_THRESHOLD;
+      }
+      counts[counts.size()-1] += partialblock;
+      count += partialblock;
+      std::cout << "COUNT:" << count << std::endl;
+      std::cout << "FILE SIZE:" << infile_size << std::endl;
+      for (int j = 0; j < displs.size(); j++)
+      {
+        std::cout << displs[j] * BIGFILE_LOW_THRESHOLD << std::endl;
+      }
+      std::cout << infilename.c_str() << "\n";
+
+
+      /*MPI_Scatterv(ptr, 	
+				 counts.data(), 
+				 displs.data(),
+				 MPI_DOUBLE,
+				 localA.data(), // rcvbuf
+				 localn,	    // rcvcount 
+				 MPI_DOUBLE,	
+				 0,	      	   // root 
+				 MPI_COMM_WORLD);*/
+
+    }
   }
   else
   {
-    success &= addFileToVector(argv[2], statbuf.st_size, compressing, FilesVector);
+    // std::cout << myId << "\n";
   }
-
   if (!success)
   {
     printf("Exiting with (some) Error(s)\n");
     return -1;
   }
-  printf("Exiting with Success\n");
+  if (!myId)
+    printf("Exiting with Success\n");
+  MPI_Finalize();
   return 0;
 }
