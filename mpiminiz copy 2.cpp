@@ -271,8 +271,8 @@ int main(int argc, char *argv[])
         std::vector<int> displs(numP);
         for (int j = 0; j < numP; ++j)
         {
-          auto start = (fullblocks * j / numP) * BIGFILE_LOW_THRESHOLD;
-          auto end = (fullblocks * (j + 1) / numP) * BIGFILE_LOW_THRESHOLD;
+          auto start = (fullblocks * j / numP);
+          auto end = (fullblocks * (j + 1) / numP);
           counts[j] = end - start;
           displs[j] = start;
         }
@@ -280,11 +280,16 @@ int main(int argc, char *argv[])
 
         MPI_Request rq_send[numberOfBlocks];
         MPI_Status statuses[numberOfBlocks];
-        for (int j = 1; j < numP; ++j)
+        unsigned char *fileBlock[numberOfBlocks];
+        for (int j = 0; j < fullblocks; ++j)
         {
-          std::cout << "SIZE OF counts:" << counts[j]<< "\n";
-          if(counts[j] != 0)
-           MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, j, idFile, MPI_COMM_WORLD, &rq_send[j]);
+          // std::cout << j % (numP - 1) + 1 << "\n";
+
+          MPI_Isend((ptr + j * BIGFILE_LOW_THRESHOLD), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+        }
+        if (partialblock)
+        {
+          MPI_Isend((ptr + BIGFILE_LOW_THRESHOLD * fullblocks), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, fullblocks % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[fullblocks]);
         }
       }
       std::cout << infilename.c_str() << "\n";
@@ -314,12 +319,12 @@ int main(int argc, char *argv[])
 
     int countElements;
 
-    //std::cout << ": MY ID IS :" << myId << "\n";
-    //std::cout << ": Number Of Files:" << numberOfFiles << "\n";
-    //std::cout << ": sizeFile:" << array[0] << "\n";
+    std::cout << ": MY ID IS :" << myId << "\n";
+    std::cout << ": Number Of Files:" << numberOfFiles << "\n";
+    std::cout << ": sizeFile:" << array[2] << "\n";
     do
     {
-      
+      unsigned char *ptrIN = new unsigned char[BIGFILE_LOW_THRESHOLD];
       MPI_Probe(0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
       if(status.MPI_TAG == INT_MAX)
@@ -328,12 +333,17 @@ int main(int argc, char *argv[])
       //Get an estimate of the data to recive
       int estimation = array[status.MPI_TAG]/numP + BIGFILE_LOW_THRESHOLD;
       std::cout << "estimation:" << estimation << "\n";
-      unsigned char *ptrIN = new unsigned char[estimation];
-      MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+      /* if (status.MPI_TAG)
+      {
+        // std::cout << myId << "---------------------" << "\n";
+      }
+      else
+      {
+        // std::cout << myId << "PROBEEEE!!!!2222" << "\n";
+      } */
+      MPI_Irecv(ptrIN, BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
       MPI_Wait(&rq_recv, &status);
       MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-
-      std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
       // std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
     } while (status.MPI_TAG != INT_MAX);
 
