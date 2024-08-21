@@ -23,7 +23,6 @@
 using namespace ff;
 #include <utility.hpp>
 #include <mpi.h>
-#include <omp.h>
 
 struct FileStruct
 {
@@ -203,16 +202,7 @@ int main(int argc, char *argv[])
     }
 
     size_t sizeVector = FilesVector.size();
-
-    // Send information for the workers
-    long arrayToSend[sizeVector];
-
-    for (int i = 0; i < sizeVector; ++i)
-    {
-      arrayToSend[i] = FilesVector[i].size;
-    }
-
-#pragma omp parallel for
+    // #pragma omp parallel for
     for (int i = 0; i < sizeVector; ++i)
     {
       MPI_Request rq_send[numP], rq_recv[numP];
@@ -228,7 +218,25 @@ int main(int argc, char *argv[])
         std::fprintf(stderr, "Failed to mapFile\n");
         success = false;
         continue;
-      }
+      } 
+      /* FILE *file = fopen(infilename.c_str(), "rb");
+      if (!file) {
+        perror("File opening failed");
+        return EXIT_FAILURE;
+    }
+      unsigned char *ptr;
+      ptr = new unsigned char[infile_size];
+      size_t bytesRead = fread(ptr, 1, infile_size, file);
+      if (bytesRead != infile_size)
+      {
+        perror("File read failed");
+        free(ptr);
+        //delete [] ptr;
+        fclose(file);
+        return EXIT_FAILURE;
+      } */
+
+      MPI_UNSIGNED_CHAR;
 
       const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
       const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
@@ -236,73 +244,102 @@ int main(int argc, char *argv[])
       if (partialblock)
         numberOfBlocks++;
 
-      std::cout << infilename.c_str() << "\n";
-      std::cout << omp_get_thread_num() << "\n";
-
-      if (infile_size > BIGFILE_LOW_THRESHOLD)
+      std::vector<int> counts(numP);
+      std::vector<int> displs(numP);
+      for (int j = 0; j < numP; ++j)
       {
+        auto start = (fullblocks * j / numP);
+        auto end = (fullblocks * (j + 1) / numP);
+        counts[j] = end - start;
+        displs[j] = start;
+      }
+      counts[counts.size() - 1] += partialblock;
 
-        std::vector<int> counts(numP);
-        std::vector<int> displs(numP);
-        for (int j = 0; j < numP; ++j)
-        {
-          auto start = (fullblocks * j / numP);
-          auto end = (fullblocks * (j + 1) / numP);
-          counts[j] = end - start;
-          displs[j] = start;
-        }
-        counts[counts.size() - 1] += partialblock;
+      /* size_t count = 0;
+      for (int j = 0; j < counts.size(); j++)
+      {
+        std::cout << counts[j] * BIGFILE_LOW_THRESHOLD << std::endl;
+        count += counts[j] * BIGFILE_LOW_THRESHOLD;
+      }
+      std::cout << "COUNT:" << count << std::endl;
+      std::cout << "FILE SIZE:" << infile_size << std::endl;
+      for (int j = 0; j < displs.size(); j++)
+      {
+        std::cout << displs[j] * BIGFILE_LOW_THRESHOLD << std::endl;
+      }
+      std::cout << infilename.c_str() << "\n"; */
 
+      // IM STARTING FROM 1
+      /* for (int j = 1; j < displs.size(); j++)
+        MPI_Isend(&counts[j], 1, MPI_INT, j, idFile, MPI_COMM_WORLD, &rq_send[j]);
+      for (int j = 1; j < displs.size(); j++)
+        MPI_Isend(ptr + displs[j], counts[j], MPI_UNSIGNED_CHAR, j, idFile,
+                  MPI_COMM_WORLD, &rq_send[j]); */
+
+      // MPI_Waitall();
+      /* for (int j = 1; j < displs.size(); j++)
+        MPI_Send(ptr + displs[j], counts[j], MPI_UNSIGNED_CHAR, j, idFile, MPI_COMM_WORLD); */
+      std::cout << infilename.c_str() << "\n";
+      //if (infile_size > BIGFILE_LOW_THRESHOLD)
+      {
         MPI_Request rq_send[numberOfBlocks];
         MPI_Status statuses[numberOfBlocks];
         unsigned char *fileBlock[numberOfBlocks];
+        unsigned char a[9];
+        a[0] = 'a';
+        a[1] = 'b';
+        a[2] = 'c';
+        a[3] = 'a';
+        a[4] = 'b';
+        a[5] = 'z';
+        a[6] = 'a';
+        a[7] = 'b';
+        a[8] = 'd';
+        //for (int j = 0; j < 3; ++j)
         for (int j = 0; j < fullblocks; ++j)
         {
-          // std::cout << j % (numP - 1) + 1 << "\n";
+          /* fileBlock[j] = new unsigned char[BIGFILE_LOW_THRESHOLD];
+          memcpy(fileBlock[j],(ptr + j*BIGFILE_LOW_THRESHOLD),(sizeof(unsigned char)*BIGFILE_LOW_THRESHOLD)); */
 
-          MPI_Isend((ptr + j * BIGFILE_LOW_THRESHOLD), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+          // MPI_Isend(fileBlock[j], BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, j % (numP-1) +1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+          std::cout << j % (numP - 1) + 1 << "\n";
+          //MPI_Isend(ptr, 10, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+
+          MPI_Isend((ptr + j*BIGFILE_LOW_THRESHOLD), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+
+          //MPI_Isend((a + j*3), 3, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+          //MPI_Isend((ptr + j+1), 1, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+
+          //MPI_Wait(&rq_send[j],MPI_STATUS_IGNORE);
         }
         if (partialblock)
         {
-          MPI_Isend((ptr + BIGFILE_LOW_THRESHOLD * fullblocks), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, fullblocks % (numP - 1) + 1, idFile, MPI_COMM_WORLD, &rq_send[fullblocks]);
+          MPI_Isend((ptr + BIGFILE_LOW_THRESHOLD * fullblocks), BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, fullblocks % (numP -1) +1, idFile, MPI_COMM_WORLD, &rq_send[fullblocks]);
         }
+        //MPI_Waitall(numberOfBlocks,rq_send,statuses);
+        //sleep(10);
       }
-      std::cout << infilename.c_str() << "\n";
     }
-    MPI_Request rq_end[numP];
-    MPI_Status rq_end_status[numP];
-    for (int j = 1; j < numP; ++j)
-    {
-      MPI_Isend(NULL, 0, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, INT_MAX, MPI_COMM_WORLD, &rq_end[j]);
-    }
-    // MPI_Waitall(numP,rq_end,rq_end_status);
   }
   else
   {
     unsigned char *ptrIN = new unsigned char[BIGFILE_LOW_THRESHOLD];
-    // unsigned char *ptrIN = new unsigned char[10];
+    //unsigned char *ptrIN = new unsigned char[10];
     MPI_Status status;
     int countElements;
     MPI_Request rq_recv;
-    // MPI_Irecv(&ptrIN, BIGFILE_LOW_THRESHOLD + 1, MPI_UNSIGNED_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+    //MPI_Irecv(&ptrIN, BIGFILE_LOW_THRESHOLD + 1, MPI_UNSIGNED_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
     std::cout << ": MY ID IS :" << myId << "\n";
-    do
-    {
-      MPI_Probe(0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-      if (status.MPI_TAG == 0)
-      {
-        std::cout << myId << "---------------------" << "\n";
-      }
-      else
-      {
-        std::cout << myId << "PROBEEEE!!!!2222" << "\n";
-      }
-      MPI_Irecv(ptrIN, BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
-      // MPI_Wait(&rq_recv, &status);
-      MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-      std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
-    } while (status.MPI_TAG != INT_MAX);
-    std::cout << myId << "FINE" << "\n";
+    //MPI_Irecv(&ptrIN, 10, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+    unsigned char a[3];
+   // MPI_Irecv(a, 3, MPI_UNSIGNED_CHAR, 0,MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+    //MPI_Irecv(a, 1, MPI_UNSIGNED_CHAR, 0,MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+    MPI_Irecv(ptrIN, BIGFILE_LOW_THRESHOLD, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+    MPI_Wait(&rq_recv, &status);
+
+
+    MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
+    std::cout << myId << "RECIVED: " << ptrIN[0] <<" MY COUNT IS :" << countElements << "\n";
   }
   if (!success)
   {
