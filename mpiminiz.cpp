@@ -154,7 +154,7 @@ static inline void usage(const char *argv0)
   printf("--------------------\n");
 }
 
-static inline bool mpiMaster(size_t i, int numP)
+bool mpiMaster(size_t i, int numP)
 {
   size_t idFile = i;
   const std::string infilename(FilesVector[idFile].filename);
@@ -188,8 +188,9 @@ static inline bool mpiMaster(size_t i, int numP)
     auto end = (fullblocks * (j + 1) / (numW)) * BIGFILE_LOW_THRESHOLD;
     counts[j] = end - start;
     displs[j] = start;
-    if (counts[i] > max)
-      max = counts[i];
+
+    if (counts[j] > max)
+      max = counts[j] + partialblock;
   }
   counts[counts.size() - 1] += partialblock;
 
@@ -209,26 +210,36 @@ static inline bool mpiMaster(size_t i, int numP)
     }
   }
 
+  std::cout << "BOP" << "\n";
   FilesVector[idFile].arrayOfPointers = new unsigned char *[numW];
-  int activeWorkers[numW] = {-1};
+  int activeWorkers[numW];
+  for (int j = 0; j < numW; ++j)
+  {
+    activeWorkers[j] = -1;
+  }
   if (!workingMaster)
   {
     size_t sizeOfT = sizeof(size_t);
     // size of the first 2 sizeof t in the header
     size_t compressFileSize = sizeOfT * 2;
     size_t compressedByWorkerSize[numW];
+    std::cout << "BIP" << "\n";
     for (int j = 0; j < sentMessages; ++j)
     {
       MPI_Request rq_recv;
       MPI_Status status;
       unsigned char *ptrIN = new unsigned char[max];
+      std::cout << "MAX:" << max << "\n";
       MPI_Irecv(ptrIN, max, MPI_UNSIGNED_CHAR, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+      std::cout << "BIP4" << "\n";
       MPI_Wait(&rq_recv, &status);
       int countElements;
       MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
       size_t nblocks;
+      
       memcpy(&nblocks, ptrIN, sizeOfT);
-      //std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
+      
+      std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
       compressFileSize += countElements - sizeOfT;
       compressedByWorkerSize[status.MPI_SOURCE-1] = countElements - sizeOfT * (nblocks + 1);
       std::cout << "COMPRESSED WORKER SIZE: " << compressedByWorkerSize[status.MPI_SOURCE-1] << "\n";
