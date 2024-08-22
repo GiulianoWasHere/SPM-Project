@@ -723,9 +723,7 @@ int main(int argc, char *argv[])
     {
       arrayToSend[i] = FilesVector[i].size;
       if (arrayToSend[i] != FilesVector[i].size)
-      {
         std::cout << "NOT EQUAL NOT EQUAL NOT EQUAL FILESVECTOR ARRAY TO SEND" << "\n";
-      }
     }
     MPI_Request rq_sendBEGINNING[numP];
     for (int i = 1; i < numP; ++i)
