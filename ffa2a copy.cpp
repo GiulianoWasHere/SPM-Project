@@ -364,8 +364,8 @@ struct L_Worker : ff_monode_t<Task_t>
           }
           delete [] FilesVector[idFile].arrayOfPointers;
           delete [] FilesVector[idFile].sizeOfBlocks;
-          unmapFile(in->ptr, in->size);
           delete in;
+          unmapFile(in->ptr, in->size);
         }
       }
       else
@@ -395,7 +395,7 @@ struct L_Worker : ff_monode_t<Task_t>
 
           bool success = writeFile(outfilename,in->ptrOut, in->uncompreFileSize);
           unmapFile(in->ptr, in->size);
-          delete [] in->ptrOut;
+          delete in->ptrOut;
           delete in;
         }
       }
@@ -514,7 +514,7 @@ int main(int argc, char *argv[])
   ff_a2a a2a;
   a2a.add_firstset(LW);
   a2a.add_secondset(RW);
-  a2a.wrap_around(); 
+  a2a.wrap_around();
 
   
   
@@ -522,16 +522,8 @@ int main(int argc, char *argv[])
   {
     error("running a2a\n");
     return -1;
-  } 
-  /* for(int i;i<LW.size();++i)
-  {
-    delete LW[i];
   }
-  for(int i;i<RW.size();++i)
-  {
-    delete RW[i];
-  } */
-  
+
   if (!success)
   {
     printf("Exiting with (some) Error(s)\n");
