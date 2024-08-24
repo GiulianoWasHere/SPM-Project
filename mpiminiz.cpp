@@ -154,7 +154,7 @@ static inline void usage(const char *argv0)
   printf("--------------------\n");
 }
 
-bool mpiMaster(size_t i, int numP)
+static inline bool mpiMasterCompressing(size_t i, int numP)
 {
   size_t idFile = i;
   const std::string infilename(FilesVector[idFile].filename);
@@ -175,8 +175,8 @@ bool mpiMaster(size_t i, int numP)
   if (partialblock)
     numberOfBlocks++;
 
-  //std::cout << infilename.c_str() << "\n";
-  //std::cout << omp_get_thread_num() << "\n";
+  // std::cout << infilename.c_str() << "\n";
+  // std::cout << omp_get_thread_num() << "\n";
 
   std::vector<int> counts(numW);
   std::vector<int> displs(numW);
@@ -197,12 +197,12 @@ bool mpiMaster(size_t i, int numP)
   MPI_Request rq_send[numW];
   MPI_Status statuses[numW];
 
-  //std::cout << "numberOFWorkers:" << numW << "\n";
+  // std::cout << "numberOFWorkers:" << numW << "\n";
   int loopLength = (numW == numP) ? numP : numW;
   int sentMessages = 0;
   for (int j = (numW == numP) ? 1 : 0; j < loopLength; ++j)
   {
-    //std::cout << "SIZE OF counts:" << counts[j] << "\n";
+    // std::cout << "SIZE OF counts:" << counts[j] << "\n";
     if (counts[j] != 0)
     {
       MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, j + numP - numW, idFile, MPI_COMM_WORLD, &rq_send[j]);
@@ -210,7 +210,7 @@ bool mpiMaster(size_t i, int numP)
     }
   }
 
-  //std::cout << "BOP" << "\n";
+  // std::cout << "BOP" << "\n";
   FilesVector[idFile].arrayOfPointers = new unsigned char *[numW];
   int activeWorkers[numW];
   for (int j = 0; j < numW; ++j)
@@ -223,36 +223,35 @@ bool mpiMaster(size_t i, int numP)
     // size of the first 2 sizeof t in the header
     size_t compressFileSize = sizeOfT * 2;
     size_t compressedByWorkerSize[numW];
-    //std::cout << "BIP" << "\n";
+    // std::cout << "BIP" << "\n";
     for (int j = 0; j < sentMessages; ++j)
     {
       MPI_Request rq_recv;
       MPI_Status status;
-      int estimatedSize = max + BIGFILE_LOW_THRESHOLD*4;
+      int estimatedSize = max + BIGFILE_LOW_THRESHOLD * 4;
       unsigned char *ptrIN = new unsigned char[estimatedSize];
 
-      std::cout << "ESTIMATED SIZE: " << estimatedSize << " CHUNKSIZE EXPECTED: " << FilesVector[idFile].size/numW <<  " FILENAME " << FilesVector[idFile].filename << "\n";
+      std::cout << "ESTIMATED SIZE: " << estimatedSize << " CHUNKSIZE EXPECTED: " << FilesVector[idFile].size / numW << " FILENAME " << FilesVector[idFile].filename << "\n";
       MPI_Irecv(ptrIN, estimatedSize, MPI_UNSIGNED_CHAR, MPI_ANY_SOURCE, idFile, MPI_COMM_WORLD, &rq_recv);
       std::cout << "BIP4" << "\n";
       MPI_Wait(&rq_recv, &status);
       int countElements;
       MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
       size_t nblocks;
-      
+
       memcpy(&nblocks, ptrIN, sizeOfT);
-      
-      //std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
+
+      // std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
       compressFileSize += countElements - sizeOfT;
-      compressedByWorkerSize[status.MPI_SOURCE-1] = countElements - sizeOfT * (nblocks + 1);
-      //std::cout << "COMPRESSED WORKER SIZE: " << compressedByWorkerSize[status.MPI_SOURCE-1] << "\n";
-      //std::cout << "COMPRESSED COUNTS: " << countElements << "\n";
+      compressedByWorkerSize[status.MPI_SOURCE - 1] = countElements - sizeOfT * (nblocks + 1);
+      // std::cout << "COMPRESSED WORKER SIZE: " << compressedByWorkerSize[status.MPI_SOURCE-1] << "\n";
+      // std::cout << "COMPRESSED COUNTS: " << countElements << "\n";
       activeWorkers[status.MPI_SOURCE - 1] = nblocks;
       FilesVector[idFile].arrayOfPointers[status.MPI_SOURCE - 1] = ptrIN;
     }
 
-
-    //std::cout << "COMPRESSED FILE SIZE:" << compressFileSize << "\n";
-    // Creation header
+    // std::cout << "COMPRESSED FILE SIZE:" << compressFileSize << "\n";
+    //  Creation header
     unsigned char *ptrHeader = new unsigned char[sizeOfT * (numberOfBlocks + 2)];
 
     // size of file
@@ -265,7 +264,7 @@ bool mpiMaster(size_t i, int numP)
     {
       if (activeWorkers[j] != -1)
       {
-        //std::cout << "ACTIVE WORKERS:" << activeWorkers[j] << "\n";
+        // std::cout << "ACTIVE WORKERS:" << activeWorkers[j] << "\n";
         memcpy((ptrHeader + bytesRead), (FilesVector[idFile].arrayOfPointers[j] + sizeOfT), activeWorkers[j] * sizeOfT);
         bytesRead += activeWorkers[j] * sizeOfT;
       }
@@ -292,13 +291,13 @@ bool mpiMaster(size_t i, int numP)
       }
       return false;
     }
-    //std::cout << "HEADER:" << "\n";
-    // Write of the workers compressed data
+    // std::cout << "HEADER:" << "\n";
+    //  Write of the workers compressed data
     for (size_t j = 0; j < numW; ++j)
     {
       if (activeWorkers[j] != -1)
       {
-        //std::cout << "BLOCK SIZE TOTAL:" << compressedByWorkerSize[j] +  sizeOfT * (activeWorkers[j] + 1) << "\n";
+        // std::cout << "BLOCK SIZE TOTAL:" << compressedByWorkerSize[j] +  sizeOfT * (activeWorkers[j] + 1) << "\n";
         if (fwrite((FilesVector[idFile].arrayOfPointers[j] + sizeOfT * (activeWorkers[j] + 1)), 1, compressedByWorkerSize[j], pOutfile) != compressedByWorkerSize[j])
         {
           if (QUITE_MODE >= 1)
@@ -313,12 +312,55 @@ bool mpiMaster(size_t i, int numP)
     if (fclose(pOutfile) != 0)
       return false;
 
-    //CLEAN MEMORY
-
+    // CLEAN MEMORY
   }
   return true;
 }
 
+static inline bool mpiMasterDecompressing(size_t i, int numP)
+{
+  size_t idFile = i;
+  const std::string infilename(FilesVector[idFile].filename);
+  size_t infile_size = FilesVector[idFile].size;
+  size_t sizeOfT = sizeof(size_t);
+
+  unsigned char *ptr = nullptr;
+  if (!mapFile(infilename.c_str(), infile_size, ptr))
+  {
+    std::fprintf(stderr, "Failed to mapFile\n");
+    success = false;
+    return false;
+  }
+
+  // Size of the uncompressed file
+  size_t uncompressedFileSize;
+  memcpy(&uncompressedFileSize, ptr, sizeof(size_t));
+
+  // Number of blocks taken from header
+  size_t numberOfBlocks;
+  memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
+
+  // unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
+
+  size_t headerSize = sizeOfT * (numberOfBlocks + 2);
+  size_t bytesRead = headerSize;
+
+  size_t numberTasks = numberOfBlocks / numW;
+  size_t overflowTasks = numberOfBlocks % numW;
+
+
+  /* for (int j = 0; j < numW; ++j)
+  {
+    // std::cout << "SIZE OF counts:" << counts[j] << "\n";
+    if (counts[j] != 0)
+    {
+      MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, j + numP - numW, idFile, MPI_COMM_WORLD, &rq_send[j]);
+      sentMessages++;
+    }
+  } */
+
+  return true;
+}
 
 struct MultiInputHelperNode : ff::ff_minode_t<Task_t>
 {
@@ -348,22 +390,22 @@ struct L_Worker : ff_monode_t<Task_t>
           break;
 
         int mpitag = status.MPI_TAG;
-        //std::cout << "SIZE OF THE FILE:" << FilesVector[mpitag].size << "\n";
-        // Get an estimate of the data to recive
+        // std::cout << "SIZE OF THE FILE:" << FilesVector[mpitag].size << "\n";
+        //  Get an estimate of the data to recive
 
         // NUMP-1!!!!!!!!!!!
 
         int estimation = FilesVector[mpitag].size / numW + BIGFILE_LOW_THRESHOLD * 2;
 
         // NUMP-1!!!!!!!!!!!!!!!!
-        //std::cout << "estimation:" << estimation << "\n";
+        // std::cout << "estimation:" << estimation << "\n";
         unsigned char *ptrIN = new unsigned char[estimation];
         MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
         MPI_Wait(&rq_recv, &status);
         int countElements;
         MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
 
-        //std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
+        // std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
         size_t idFile = mpitag;
 
         size_t infile_size = countElements;
@@ -531,7 +573,7 @@ struct Gatherer : ff_minode_t<Task_t>
           tot += FilesVector[idFile].sizeOfBlocks[i];
         }
         MPI_Request rq_send;
-        std::cout << "SONO: " << myId << "SENDING: " << tot << "SIZE OF PTR : " << (sizeOfT * (in->nblocks + 1) + FilesVector[idFile].compressedLength) <<"\n";
+        std::cout << "SONO: " << myId << "SENDING: " << tot << "SIZE OF PTR : " << (sizeOfT * (in->nblocks + 1) + FilesVector[idFile].compressedLength) << "\n";
         MPI_Isend(ptrToSend, tot, MPI_UNSIGNED_CHAR, 0, idFile, MPI_COMM_WORLD, &rq_send);
         FilesVector[idFile].pointer = ptrToSend;
         /* //std::cout << "SONO: " << myId << "HO COMPRESSO:" << "\n";
@@ -561,7 +603,7 @@ struct Gatherer : ff_minode_t<Task_t>
     return GO_ON;
   }
 };
-static inline bool mpiWorker(int myId, int numP,int numberOfWorkers)
+static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
 {
   // This part read the first message where the length of each file is specified
   //---------------
@@ -570,7 +612,7 @@ static inline bool mpiWorker(int myId, int numP,int numberOfWorkers)
   MPI_Status statusProbe;
   int numberOfFiles = 0;
   MPI_Request rq_recv;
-  MPI_Irecv(array, MAX_FILES_IN_DIRECTORY * sizeof(MPI_UNSIGNED_LONG_LONG), MPI_UNSIGNED_LONG_LONG, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+  MPI_Irecv(array, MAX_FILES_IN_DIRECTORY * sizeof(MPI_UNSIGNED_LONG_LONG), MPI_UNSIGNED_LONG_LONG, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
   MPI_Wait(&rq_recv, &status);
   MPI_Get_count(&status, MPI_UNSIGNED_LONG_LONG, &numberOfFiles);
 
@@ -607,7 +649,7 @@ static inline bool mpiWorker(int myId, int numP,int numberOfWorkers)
     error("running a2a\n");
     return -1;
   }
-  //std::cout << myId << "FINE" << "\n";
+  // std::cout << myId << "FINE" << "\n";
 
   // delete all the allocated memory
   for (int i = 0; i < FilesVector.size(); ++i)
@@ -725,7 +767,7 @@ int main(int argc, char *argv[])
       arrayToSend[i] = FilesVector[i].size;
       if (arrayToSend[i] != FilesVector[i].size)
       {
-        //std::cout << "NOT EQUAL NOT EQUAL NOT EQUAL FILESVECTOR ARRAY TO SEND" << "\n";
+        // std::cout << "NOT EQUAL NOT EQUAL NOT EQUAL FILESVECTOR ARRAY TO SEND" << "\n";
       }
     }
     MPI_Request rq_sendBEGINNING[numP];
@@ -740,7 +782,10 @@ int main(int argc, char *argv[])
     {
       if (FilesVector[i].size > BIGFILE_LOW_THRESHOLD)
       {
-        mpiMaster(i, numP);
+        if (compressing)
+          mpiMasterCompressing(i, numP);
+        else
+          mpiMasterDecompressing(i, numP);
       }
       else // In case the files are very small we just do it locally
       {
@@ -763,7 +808,7 @@ int main(int argc, char *argv[])
   }
   else // Handle the workers
   {
-    mpiWorker(myId, numP,Rw);
+    mpiWorker(myId, numP, Rw);
   }
   if (!success)
 

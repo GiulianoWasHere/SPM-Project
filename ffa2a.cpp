@@ -337,7 +337,7 @@ struct L_Worker : ff_monode_t<Task_t>
       }
       return EOS;
     }
-    else
+    else //HERE WE WRITE IN THE FILE
     {
       if (compressing)
       {
