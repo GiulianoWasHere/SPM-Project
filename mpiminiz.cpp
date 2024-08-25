@@ -34,7 +34,7 @@ struct FileStruct
   size_t *sizeOfBlocks;
   unsigned char **arrayOfPointers;
   size_t compressedLength = 0;
-  bool arrived = false;
+  int numBlocks = -1; // Used in decompressing to check if it is the first message from the Master
 };
 
 // ------------ GLOBAL VARIBLES ---------------
@@ -353,28 +353,58 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
   MPI_Status statuses[numW];
   int sentMessages = 0;
   // We skip the the uncompressed file size and the number of blocks from the header
-  int tot = sizeOfT*2;
-  std::cout << "NUMBER OF TASKS: "<< numberTasks << "\n";
-  std::cout << "NUMBER OF BLOCKS: "<< numberOfBlocks << "\n";
-  std::cout << "OVERFLOW TASK: "<< overflowTasks << "\n";
+  int tot = sizeOfT * 2;
+  std::cout << "NUMBER OF TASKS: " << numberTasks << "\n";
+  std::cout << "NUMBER OF BLOCKS: " << numberOfBlocks << "\n";
+  std::cout << "OVERFLOW TASK: " << overflowTasks << "\n";
   if (!workingMaster)
   {
-    for (int j = 1; j < numW; ++j)
+
+    size_t bytesToSendForEachWorker[numW];
+    size_t numberOfBlocksForEachWorker[numW];
+    size_t tempValue;
+    for (int j = 0; j < numW; ++j)
+    {
+      bytesToSendForEachWorker[j] = 0;
+      numberOfBlocksForEachWorker[j] = 0;
+    }
+    for (int j = 0; j < numW; ++j)
     {
       if (overflowTasks > 0)
       {
-        MPI_Isend((ptr + tot), sizeOfT * (numberTasks + 1), MPI_UNSIGNED_CHAR, j, idFile, MPI_COMM_WORLD, &rq_send[j]);
+        MPI_Isend((ptr + tot), sizeOfT * (numberTasks + 1), MPI_UNSIGNED_CHAR, j + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+
+        for (int z = 0; z < numberTasks + 1; z++)
+        {
+          memcpy(&tempValue, ptr + tot + z * sizeOfT, sizeOfT);
+          bytesToSendForEachWorker[j] += tempValue;
+        }
         tot += sizeOfT * (numberTasks + 1);
         overflowTasks--;
+        numberOfBlocksForEachWorker[j] += numberTasks + 1;
       }
       else
       {
-        MPI_Isend((ptr + tot), sizeOfT * (numberTasks), MPI_UNSIGNED_CHAR, j, idFile, MPI_COMM_WORLD, &rq_send[j]);
+        MPI_Isend((ptr + tot), sizeOfT * (numberTasks), MPI_UNSIGNED_CHAR, j + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+        for (int z = 0; z < numberTasks; z++)
+        {
+          memcpy(&tempValue, ptr + tot + z * sizeOfT, sizeOfT);
+          bytesToSendForEachWorker[j] += tempValue;
+        }
         tot += sizeOfT * (numberTasks);
+        numberOfBlocksForEachWorker[j] += numberTasks;
       }
     }
-    std::cout << "OVERFLOW TASK: "<< overflowTasks << "\n";
+    std::cout << "OVERFLOW TASK: " << overflowTasks << "\n";
     std::cout << "SENT \n";
+    for (int j = 0; j < numW; ++j)
+      std::cout << "Worker: " << j + 1 << "Bytes to send: " << bytesToSendForEachWorker[j] << " Blocks For each worker: " << numberOfBlocksForEachWorker[j] << "\n";
+
+    for (int j = 0; j < numW; ++j)
+    {
+      MPI_Isend((ptr + tot), bytesToSendForEachWorker[j], MPI_UNSIGNED_CHAR, j + 1, idFile, MPI_COMM_WORLD, &rq_send[j]);
+      tot += bytesToSendForEachWorker[j];
+    }
     sleep(10);
   }
 
@@ -483,22 +513,44 @@ struct L_Worker : ff_monode_t<Task_t>
 
         int mpitag = status.MPI_TAG;
         // std::cout << "SIZE OF THE FILE:" << FilesVector[mpitag].size << "\n";
-        //  Get an estimate of the data to recive
+        // If it is the first message coming from the master for that specific file
+        if (FilesVector[mpitag].numBlocks == -1)
+        {
+          //  Get an estimate of the data to recive
+          int estimation = FilesVector[mpitag].size / BIGFILE_LOW_THRESHOLD + 1;
+          estimation *= sizeOfT;
+          // std::cout << myId << " estimation:" << estimation << "\n";
+          unsigned char *ptrIN = new unsigned char[estimation];
+          MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+          MPI_Wait(&rq_recv, &status);
+          int countElements;
+          MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
+          // std::cout << "countElements:" << countElements << "\n";
 
-        // NUMP-1!!!!!!!!!!!
+          FilesVector[mpitag].numBlocks = countElements / sizeOfT;
+          FilesVector[mpitag].sizeOfBlocks = new size_t[FilesVector[mpitag].numBlocks];
+          for (int j = 0; j < FilesVector[mpitag].numBlocks; ++j)
+          {
+            memcpy(&FilesVector[mpitag].sizeOfBlocks[j], ptrIN + sizeOfT * j, sizeOfT);
+            // Used to get the exact estimation in the else branch
+            FilesVector[mpitag].compressedLength += FilesVector[mpitag].sizeOfBlocks[j];
+          }
 
-        int estimation = FilesVector[mpitag].size / BIGFILE_LOW_THRESHOLD +1;
-        estimation *= sizeOfT;
-        // NUMP-1!!!!!!!!!!!!!!!!
-        std::cout << myId <<" estimation:" << estimation << "\n";
-        unsigned char *ptrIN = new unsigned char[estimation];
-        MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
-        MPI_Wait(&rq_recv, &status);
-        int countElements;
-        MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-        std::cout << "countElements:" << countElements << "\n";
+          std::cout << myId << " Number of blocks Received:" << FilesVector[mpitag].numBlocks << " First size_t block: " << FilesVector[mpitag].sizeOfBlocks[0] << " number of bytes to receive: " << FilesVector[mpitag].compressedLength << "\n";
+        }
+        else
+        {
+          int estimation = FilesVector[mpitag].compressedLength;
+          // std::cout << myId << " estimation:" << estimation << "\n";
+          unsigned char *ptrIN = new unsigned char[estimation];
+          MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
+          MPI_Wait(&rq_recv, &status);
+          int countElements;
+          MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
+          std::cout << myId << " CompressedLength:" << FilesVector[mpitag].compressedLength << " counts: " << countElements << "\n";
+        }
+
       } while (status.MPI_TAG != INT_MAX);
-      
     }
     return EOS;
   }
@@ -793,7 +845,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-          
+
           mpiMasterDecompressing(i, numP);
         }
       }
