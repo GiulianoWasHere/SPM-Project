@@ -151,8 +151,6 @@ static inline void usage(const char *argv0)
   printf("\nModes:\n");
   printf("c - Compresses file infile to a zlib stream into outfile\n");
   printf("d - Decompress a zlib stream from infile into outfile\n");
-  printf("C - Like c but remove the input file\n");
-  printf("D - Like d but remove the input file\n");
   printf("--------------------\n");
 }
 
@@ -605,7 +603,7 @@ struct L_Worker : ff_monode_t<Task_t>
           MPI_Wait(&rq_recv, &status);
           //int countElements;
           //MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-          //  std::cout << myId << " CompressedLength:" << FilesVector[idFile].compressedLength << " counts: " << countElements << "\n";
+          // std::cout << myId << " CompressedLength:" << FilesVector[idFile].compressedLength << " counts: " << countElements << "\n";
 
           // std::cout << myId << " PTR OUT SIZE: " << BIGFILE_LOW_THRESHOLD * FilesVector[idFile].numBlocks << "\n";
           FilesVector[idFile].pointer = new unsigned char[BIGFILE_LOW_THRESHOLD * FilesVector[idFile].numBlocks];
@@ -847,8 +845,7 @@ int main(int argc, char *argv[])
     MPI_Abort(MPI_COMM_WORLD, -1);
     return -1;
   }
-  /* int myId;
-  int numP; */
+
   // Get the number of processes
   MPI_Comm_rank(MPI_COMM_WORLD, &myId);
   MPI_Comm_size(MPI_COMM_WORLD, &numP);
@@ -872,8 +869,8 @@ int main(int argc, char *argv[])
     return -1;
   }
   compressing = ((pMode[0] == 'c') || (pMode[0] == 'C'));
-  REMOVE_ORIGIN = ((pMode[0] == 'C') || (pMode[0] == 'D'));
 
+  double start_time = MPI_Wtime();
   const size_t Rw = std::stol(argv[3]);
 
   struct stat statbuf;
@@ -886,7 +883,7 @@ int main(int argc, char *argv[])
   }
   bool dir = false;
   // std::vector<FileStruct> FilesVector;
-  double start_time = MPI_Wtime();
+  
   // Handle of the master
   if (!myId)
   {
@@ -967,8 +964,9 @@ int main(int argc, char *argv[])
   }
   if (!myId)
   {
+    std::cout << "TIME MPI: " << (MPI_Wtime() - start_time) * 1000 << " milliseconds." << std::endl;
     printf("Exiting with Success\n");
-    std::cout << "TIME: " << (MPI_Wtime() - start_time) * 1000 << " milliseconds." << std::endl;
+    
   }
   MPI_Finalize();
   return 0;

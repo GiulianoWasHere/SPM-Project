@@ -38,6 +38,7 @@
 #include <miniz/miniz.h>
 
 #include <iostream>
+#include <chrono>
 
 #define SUFFIX ".miniz"
 #define BUF_SIZE (1024 * 1024)
@@ -249,40 +250,6 @@ static inline bool removeDir(const std::string &tmpdir, bool force = false)
 }
 
 // --------------------------------------------------------------------------
-// compress the input file (fname) having size infile_size
-// it returns 0 for success and -1 if something went wrong
-// if removeOrigin is true, the source file will be removed if successfully compressed
-static inline int compressFile1(const char fname[], size_t infile_size,
-								const bool removeOrigin = REMOVE_ORIGIN)
-{
-	// define the output file name
-	const std::string infilename(fname);
-	std::string outfilename = std::string(fname) + ".zip";
-
-	unsigned char *ptr = nullptr;
-	if (!mapFile(fname, infile_size, ptr))
-		return -1;
-	// get an estimation of the maximum compression size
-	unsigned long cmp_len = compressBound(infile_size);
-	// allocate memory to store compressed data in memory
-	unsigned char *ptrOut = new unsigned char[cmp_len];
-	if (compress(ptrOut, &cmp_len, (const unsigned char *)ptr, infile_size) != Z_OK)
-	{
-		if (QUITE_MODE >= 1)
-			std::fprintf(stderr, "Failed to compress file in memory\n");
-		delete[] ptrOut;
-		return -1;
-	}
-	// write the compressed data into disk
-	bool success = writeFile(outfilename, ptrOut, cmp_len);
-	if (success && removeOrigin)
-	{
-		removeFile(fname);
-	}
-	unmapFile(ptr, infile_size);
-	delete[] ptrOut;
-	return 0;
-}
 
 static inline int compressFile(const char fname[], size_t infile_size,
 							   const bool removeOrigin = REMOVE_ORIGIN)
@@ -441,162 +408,6 @@ static inline int checkHeader(const char fname[])
 	return 0;
 }
 
-// uncompress the input file (fname) having size infile_size
-// it returns 0 for success and -1 if something went wrong
-// if removeOrigin is true, the input compressed file will be removed if successfully uncompressed
-static inline int decompressFile2(const char fname[], size_t infile_size,
-								  const bool removeOrigin = REMOVE_ORIGIN)
-{
-	unsigned char *s_inbuf = new unsigned char[BUF_SIZE];
-	unsigned char *s_outbuf = new unsigned char[BUF_SIZE];
-	assert(s_inbuf);
-	assert(s_outbuf);
-	FILE *pInfile;
-	FILE *pOutfile;
-	size_t infile_remaining = 0;
-	char *fnameOut = nullptr;
-	int n = 0;
-	const std::string infilename(fname);
-	std::string outfilename;
-
-	// Open input file.
-	pInfile = fopen(fname, "rb");
-	if (!pInfile)
-	{
-		if (QUITE_MODE >= 1)
-		{
-			perror("fopen");
-			std::fprintf(stderr, "Failed opening input file!\n");
-		}
-		goto dcpError;
-		;
-	}
-	// define the output file name
-	// if the input file does not have a ".zip" extention
-	// the output file name will terminate with "_decomp"
-	// and the original file will not be removed even if
-	// removeOrigin is true
-	n = infilename.find(".zip");
-	if (n > 0)
-		outfilename = infilename.substr(0, n);
-	else
-		outfilename = infilename + "_decomp";
-	fnameOut = const_cast<char *>(outfilename.c_str());
-
-	z_stream stream;
-	// Init the z_stream
-	memset(&stream, 0, sizeof(stream));
-	stream.next_in = s_inbuf;
-	stream.avail_in = 0;
-	stream.next_out = s_outbuf;
-	stream.avail_out = BUF_SIZE;
-
-	if (infile_size == 0)
-	{
-		struct stat statbuf;
-		if (stat(fname, &statbuf) == -1)
-		{
-			if (QUITE_MODE >= 1)
-			{
-				perror("stat");
-				std::fprintf(stderr, "Error: stat %s\n", fname);
-			}
-			goto dcpError;
-			;
-		}
-		infile_size = statbuf.st_size;
-	}
-	infile_remaining = infile_size;
-	if (inflateInit(&stream))
-	{
-		if (QUITE_MODE >= 1)
-			std::fprintf(stderr, "inflateInit() failed!\n");
-		goto dcpError;
-		;
-	}
-	// Open output file.
-	pOutfile = fopen(fnameOut, "wb");
-	if (!pOutfile)
-	{
-		if (QUITE_MODE >= 1)
-		{
-			perror("fopen");
-			std::fprintf(stderr, "Failed opening output file!\n");
-		}
-		goto dcpError;
-		;
-	}
-	for (;;)
-	{
-		if (!stream.avail_in)
-		{
-			// Input buffer is empty, so read more bytes from input file.
-			size_t n = std::min((size_t)BUF_SIZE, infile_remaining);
-			if (fread(s_inbuf, 1, n, pInfile) != n)
-			{
-				if (QUITE_MODE >= 1)
-				{
-					perror("fread");
-					std::fprintf(stderr, "Failed reading from input file!\n");
-				}
-				goto dcpError;
-				;
-			}
-			stream.next_in = s_inbuf;
-			stream.avail_in = n;
-			infile_remaining -= n;
-		}
-		int status = inflate(&stream, Z_SYNC_FLUSH);
-		if ((status == Z_STREAM_END) || (!stream.avail_out))
-		{
-			// Output buffer is full, or decompression is done, so write buffer to output file.
-			size_t n = BUF_SIZE - stream.avail_out;
-			if (fwrite(s_outbuf, 1, n, pOutfile) != n)
-			{
-				if (QUITE_MODE >= 1)
-				{
-					perror("fwrite");
-					std::fprintf(stderr, "Failed writing to output file!\n");
-				}
-				goto dcpError;
-				;
-			}
-			stream.next_out = s_outbuf;
-			stream.avail_out = BUF_SIZE;
-		}
-		if (status == Z_STREAM_END)
-			break; // done
-		else if (status != Z_OK)
-		{
-			if (QUITE_MODE >= 1)
-				std::fprintf(stderr, "inflate() failed with status %i!\n", status);
-			goto dcpError;
-			;
-		}
-	} // for
-	if (inflateEnd(&stream) != Z_OK)
-	{
-		if (QUITE_MODE >= 1)
-			std::fprintf(stderr, "inflateEnd() failed!\n");
-		goto dcpError;
-		;
-	}
-	fclose(pInfile);
-	fclose(pOutfile);
-	if (n > 0 && removeOrigin)
-		removeFile(fname);
-	delete[] s_inbuf;
-	delete[] s_outbuf;
-	return 0;
-dcpError:
-	delete[] s_inbuf;
-	delete[] s_outbuf;
-	if (pInfile)
-		fclose(pInfile);
-	if (pOutfile)
-		fclose(pOutfile);
-	return -1;
-}
 
 static inline bool ends_with(const std::string& str, const std::string& suffix)
 {

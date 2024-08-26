@@ -125,8 +125,6 @@ static inline void usage(const char *argv0)
   printf("\nModes:\n");
   printf("c - Compresses file infile to a zlib stream into outfile\n");
   printf("d - Decompress a zlib stream from infile into outfile\n");
-  printf("C - Like c but remove the input file\n");
-  printf("D - Like d but remove the input file\n");
   printf("--------------------\n");
 }
 
@@ -466,7 +464,9 @@ int main(int argc, char *argv[])
     return -1;
   }
   compressing = ((pMode[0] == 'c') || (pMode[0] == 'C'));
-  REMOVE_ORIGIN = ((pMode[0] == 'C') || (pMode[0] == 'D'));
+
+  //TIMER
+  const auto start = std::chrono::steady_clock::now();
 
   const size_t Lw = std::stol(argv[3]);
   const size_t Rw = std::stol(argv[4]);
@@ -537,6 +537,8 @@ int main(int argc, char *argv[])
     printf("Exiting with (some) Error(s)\n");
     return -1;
   }
+  const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
+  std::cout << "Time FastFlow: " << duration.count() << " milliseconds" << std::endl;
   printf("Exiting with Success\n");
   return 0;
 }
