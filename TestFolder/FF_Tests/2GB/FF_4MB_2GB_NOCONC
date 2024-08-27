@@ -1,0 +1,216 @@
+LWORKERS: 1 RWORKERS: 4 COMPRESSION
+Time FastFlow: 27979 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 8 COMPRESSION
+Time FastFlow: 17602 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 16 COMPRESSION
+Time FastFlow: 14766 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14331 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13799 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13288 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 26 COMPRESSION
+Time FastFlow: 13046 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 28 COMPRESSION
+Time FastFlow: 12810 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 29 COMPRESSION
+Time FastFlow: 12418 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 30 COMPRESSION
+Time FastFlow: 12212 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 31 COMPRESSION
+Time FastFlow: 12030 milliseconds
+Exiting with Success
+LWORKERS: 1 RWORKERS: 32 COMPRESSION
+Time FastFlow: 13948 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 4 COMPRESSION
+Time FastFlow: 28433 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 8 COMPRESSION
+Time FastFlow: 17561 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 16 COMPRESSION
+Time FastFlow: 14692 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14089 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13861 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13251 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 26 COMPRESSION
+Time FastFlow: 12926 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 28 COMPRESSION
+Time FastFlow: 12477 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 29 COMPRESSION
+Time FastFlow: 12296 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 30 COMPRESSION
+Time FastFlow: 12114 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 31 COMPRESSION
+Time FastFlow: 14445 milliseconds
+Exiting with Success
+LWORKERS: 2 RWORKERS: 32 COMPRESSION
+Time FastFlow: 14100 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 4 COMPRESSION
+Time FastFlow: 27662 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 8 COMPRESSION
+Time FastFlow: 17411 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 16 COMPRESSION
+Time FastFlow: 14738 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14397 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13839 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13359 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 26 COMPRESSION
+Time FastFlow: 12856 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 28 COMPRESSION
+Time FastFlow: 12403 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 29 COMPRESSION
+Time FastFlow: 12221 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 30 COMPRESSION
+Time FastFlow: 14576 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 31 COMPRESSION
+Time FastFlow: 14395 milliseconds
+Exiting with Success
+LWORKERS: 3 RWORKERS: 32 COMPRESSION
+Time FastFlow: 14004 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 4 COMPRESSION
+Time FastFlow: 27224 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 8 COMPRESSION
+Time FastFlow: 17650 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 16 COMPRESSION
+Time FastFlow: 15008 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14437 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13621 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13256 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 26 COMPRESSION
+Time FastFlow: 12931 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 28 COMPRESSION
+Time FastFlow: 12584 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 29 COMPRESSION
+Time FastFlow: 14624 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 30 COMPRESSION
+Time FastFlow: 14508 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 31 COMPRESSION
+Time FastFlow: 14106 milliseconds
+Exiting with Success
+LWORKERS: 4 RWORKERS: 32 COMPRESSION
+Time FastFlow: 14101 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 4 COMPRESSION
+Time FastFlow: 27884 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 8 COMPRESSION
+Time FastFlow: 18030 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 16 COMPRESSION
+Time FastFlow: 14757 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14358 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13647 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13509 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 26 COMPRESSION
+Time FastFlow: 12915 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 28 COMPRESSION
+Time FastFlow: 15277 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 29 COMPRESSION
+Time FastFlow: 14908 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 30 COMPRESSION
+Time FastFlow: 14680 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 31 COMPRESSION
+Time FastFlow: 14321 milliseconds
+Exiting with Success
+LWORKERS: 6 RWORKERS: 32 COMPRESSION
+Time FastFlow: 14299 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 4 COMPRESSION
+Time FastFlow: 27736 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 8 COMPRESSION
+Time FastFlow: 17655 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 16 COMPRESSION
+Time FastFlow: 15383 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 20 COMPRESSION
+Time FastFlow: 14385 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 22 COMPRESSION
+Time FastFlow: 13834 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 24 COMPRESSION
+Time FastFlow: 13239 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 26 COMPRESSION
+Time FastFlow: 15872 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 28 COMPRESSION
+Time FastFlow: 15413 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 29 COMPRESSION
+Time FastFlow: 14781 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 30 COMPRESSION
+Time FastFlow: 14955 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 31 COMPRESSION
+Time FastFlow: 14537 milliseconds
+Exiting with Success
+LWORKERS: 8 RWORKERS: 32 COMPRESSION
+Time FastFlow: 14357 milliseconds
+Exiting with Success

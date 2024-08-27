@@ -45,9 +45,13 @@
 
 // global variables with their default values -------------------------------------------------
 static bool comp = true;					   // by default, it compresses
-//static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes threshold
 //static size_t BIGFILE_LOW_THRESHOLD = 1048576; // 1Mbyte
+//static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes
+//static size_t BIGFILE_LOW_THRESHOLD = 3145728; // 3Mbyte
 static size_t BIGFILE_LOW_THRESHOLD = 4194304; // 4Mbyte
+//static size_t BIGFILE_LOW_THRESHOLD = 5242880; // 5Mbyte
+//static size_t BIGFILE_LOW_THRESHOLD = 6291456; // 6Mbyte
+//static size_t BIGFILE_LOW_THRESHOLD = 8388608; // 8Mbyte
 static bool REMOVE_ORIGIN = false;			   // Does it keep the origin file?
 static int QUITE_MODE = 1;					   // 0 silent, 1 only errors, 2 everything
 static bool RECUR = false;					   // do we have to process the contents of subdirs?
