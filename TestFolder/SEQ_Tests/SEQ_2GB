@@ -1,0 +1,8 @@
+SIZE    TIME
+2 MB    84680 milliseconds
+4 MB    84606 milliseconds
+8 MB    82354 milliseconds
+16 MB   85106 milliseconds
+32 MB   83876 milliseconds
+64 MB   86609 milliseconds
+128 MB  83693 milliseconds
