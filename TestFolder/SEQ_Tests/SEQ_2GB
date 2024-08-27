@@ -1,8 +1,18 @@
 SIZE    TIME
 2 MB    84680 milliseconds
 4 MB    84606 milliseconds
-8 MB    82354 milliseconds
+8 MB    83354 milliseconds
 16 MB   85106 milliseconds
 32 MB   83876 milliseconds
-64 MB   86609 milliseconds
-128 MB  83693 milliseconds
+64 MB   84221 milliseconds
+128 MB  83993 milliseconds
+
+DECOMPRESS
+SIZE    TIME
+2 MB    31297 milliseconds
+4 MB    31015 milliseconds
+8 MB    30967 milliseconds
+16 MB   30783 milliseconds
+32 MB   30985 milliseconds
+64 MB   30727 milliseconds
+128 MB  30818 milliseconds
