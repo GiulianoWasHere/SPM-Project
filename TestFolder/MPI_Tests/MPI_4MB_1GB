@@ -1,0 +1,217 @@
+FILE: 1GB DIMENSION: 1024
+NODES: 3 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 10996.2 milliseconds.
+NODES: 3 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 7820.81 milliseconds.
+NODES: 3 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 7170.01 milliseconds.
+NODES: 3 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 7251.43 milliseconds.
+NODES: 3 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 6868.7 milliseconds.
+NODES: 3 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 7054.84 milliseconds.
+NODES: 3 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 6613.17 milliseconds.
+NODES: 3 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 6692.12 milliseconds.
+NODES: 3 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 6565.44 milliseconds.
+NODES: 3 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 6768.09 milliseconds.
+NODES: 3 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 7755.67 milliseconds.
+NODES: 3 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 8194.06 milliseconds.
+NODES: 4 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 8520.72 milliseconds.
+NODES: 4 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 7032.03 milliseconds.
+NODES: 4 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 6749.99 milliseconds.
+NODES: 4 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 6332.8 milliseconds.
+NODES: 4 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 6375.71 milliseconds.
+NODES: 4 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 6312.89 milliseconds.
+NODES: 4 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 6291.93 milliseconds.
+NODES: 4 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 6015.56 milliseconds.
+NODES: 4 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 6002.84 milliseconds.
+NODES: 4 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 6061.42 milliseconds.
+NODES: 4 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 6640.06 milliseconds.
+NODES: 4 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 7610.77 milliseconds.
+NODES: 5 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 7579.84 milliseconds.
+NODES: 5 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 6411.02 milliseconds.
+NODES: 5 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 6104.33 milliseconds.
+NODES: 5 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 6359.97 milliseconds.
+NODES: 5 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 5878.66 milliseconds.
+NODES: 5 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 6052.99 milliseconds.
+NODES: 5 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 5869.52 milliseconds.
+NODES: 5 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 5848.62 milliseconds.
+NODES: 5 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 5950.14 milliseconds.
+NODES: 5 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 5958.84 milliseconds.
+NODES: 5 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 6492.65 milliseconds.
+NODES: 5 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 7775.21 milliseconds.
+NODES: 6 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 7216.92 milliseconds.
+NODES: 6 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 6502.16 milliseconds.
+NODES: 6 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 6059.78 milliseconds.
+NODES: 6 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 5860.13 milliseconds.
+NODES: 6 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 5795.26 milliseconds.
+NODES: 6 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 5885.61 milliseconds.
+NODES: 6 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 5699.82 milliseconds.
+NODES: 6 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 5708.7 milliseconds.
+NODES: 6 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 5809.53 milliseconds.
+NODES: 6 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 5636.99 milliseconds.
+NODES: 6 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 6176.41 milliseconds.
+NODES: 6 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 6765.19 milliseconds.
+NODES: 7 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 6685.69 milliseconds.
+NODES: 7 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 6125.62 milliseconds.
+NODES: 7 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 5962.76 milliseconds.
+NODES: 7 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 6010.59 milliseconds.
+NODES: 7 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 5599.07 milliseconds.
+NODES: 7 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 5632.56 milliseconds.
+NODES: 7 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 5675.93 milliseconds.
+NODES: 7 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 5722.2 milliseconds.
+NODES: 7 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 5788.02 milliseconds.
+NODES: 7 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 5646.19 milliseconds.
+NODES: 7 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 6179.08 milliseconds.
+NODES: 7 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 6473.78 milliseconds.
+NODES: 8 RWORKERS: 4 COMPRESSION
+Exiting with Success
+TIME: 6512.93 milliseconds.
+NODES: 8 RWORKERS: 8 COMPRESSION
+Exiting with Success
+TIME: 5864.08 milliseconds.
+NODES: 8 RWORKERS: 16 COMPRESSION
+Exiting with Success
+TIME: 5933.23 milliseconds.
+NODES: 8 RWORKERS: 20 COMPRESSION
+Exiting with Success
+TIME: 5622.63 milliseconds.
+NODES: 8 RWORKERS: 22 COMPRESSION
+Exiting with Success
+TIME: 5651.5 milliseconds.
+NODES: 8 RWORKERS: 24 COMPRESSION
+Exiting with Success
+TIME: 5512.27 milliseconds.
+NODES: 8 RWORKERS: 26 COMPRESSION
+Exiting with Success
+TIME: 5722.93 milliseconds.
+NODES: 8 RWORKERS: 28 COMPRESSION
+Exiting with Success
+TIME: 5689.47 milliseconds.
+NODES: 8 RWORKERS: 29 COMPRESSION
+Exiting with Success
+TIME: 5729.27 milliseconds.
+NODES: 8 RWORKERS: 30 COMPRESSION
+Exiting with Success
+TIME: 5585.52 milliseconds.
+NODES: 8 RWORKERS: 31 COMPRESSION
+Exiting with Success
+TIME: 6049.8 milliseconds.
+NODES: 8 RWORKERS: 32 COMPRESSION
+Exiting with Success
+TIME: 6484.75 milliseconds.
