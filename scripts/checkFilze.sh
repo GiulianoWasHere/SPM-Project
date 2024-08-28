@@ -4,7 +4,7 @@
 shopt -s nullglob
 
 # create an array with all the filer/dir inside ~/myDir
-arr=(LeFilze/*)
+arr=($1/*)
 
 # iterate through array using a counter
 for ((i=0; i<${#arr[@]}; i++)); do

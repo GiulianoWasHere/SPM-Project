@@ -965,7 +965,7 @@ int main(int argc, char *argv[])
   if (!myId)
   {
     std::cout << "TIME MPI: " << (MPI_Wtime() - start_time) * 1000 << " milliseconds." << std::endl;
-    printf("Exiting with Success\n");
+    //printf("Exiting with Success\n");
     
   }
   MPI_Finalize();

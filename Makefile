@@ -14,9 +14,9 @@ CXXFLAGS  	= -DFF_BOUNDED_BUFFER -DDEFAULT_BUFFER_CAPACITY=512
 LDFLAGS 	= -pthread
 OPTFLAGS	= -O3 -ffast-math -DNDEBUG
 
-TARGETS		= sequential \
-		  ffa2a \
-		  mpiminiz \
+TARGETS		= SEQ_minizip \
+		  FF_minizip \
+		  MPI_minizip \
 		  generateTxt
 
 .PHONY: all clean cleanall
@@ -28,13 +28,13 @@ TARGETS		= sequential \
 
 all		: $(TARGETS)
 
-sequential	: sequential.cpp utility.hpp
+SEQ_minizip	: SEQ_minizip.cpp utility.hpp
 	$(CXX) $(INCLUDES) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c
 
-ffa2a	: ffa2a.cpp utility.hpp
+FF_minizip	: FF_minizip.cpp utility.hpp
 	$(CXX) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c $(LDFLAGS)
 
-mpiminiz	: mpiminiz.cpp utility.hpp
+MPI_minizip : MPI_minizip.cpp utility.hpp
 	$(CXXMPI) $(INCLUDES) -I$(FF_ROOT) $(OPTFLAGS) -o $@ $< ./miniz/miniz.c -fopenmp $(LDFLAGS)
 
 generateTxt : generateTxt.cpp

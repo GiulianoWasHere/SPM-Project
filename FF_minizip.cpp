@@ -539,6 +539,6 @@ int main(int argc, char *argv[])
   }
   const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
   std::cout << "Time FastFlow: " << duration.count() << " milliseconds" << std::endl;
-  printf("Exiting with Success\n");
+  //printf("Exiting with Success\n");
   return 0;
 }
