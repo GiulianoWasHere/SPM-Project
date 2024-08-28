@@ -6,9 +6,9 @@
 int main()
 {
     // Input and output file names
-    std::string inputFile = "TestFolder/FF_Tests/2GB/FF_4MB_2GB_DE";
+    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/100Files/FF_4MB_100Files";
     // std::string outputFile = "output1.csv";
-    std::string outputName = "FF_4MB_2GB_DE_LW";
+    std::string outputName = "FF_4MB_100Files";
 
     std::ifstream infile(inputFile);
     std::ofstream outfile;
@@ -83,7 +83,8 @@ int main()
                 decompressionTime = time;
             }
         }
-        else if (line.find("is Identical!") != std::string::npos)
+        // else if (line.find("is Identical!") != std::string::npos)
+        else if (line.find("-----------------------") != std::string::npos)
         {
             // Extracting File Status
             fileStatus = "Identical";
@@ -97,12 +98,12 @@ int main()
                     << compressionTime << "\n";*/
 
             //COMPRESSION TIME
-            /*outfile << rworkers << ","
-                    << compressionTime << "\n";*/
+            outfile << rworkers << ","
+                    << compressionTime << "\n";
 
             //DECOMPRESSION TIME
-            outfile << rworkers << ","
-                    << decompressionTime << "\n";
+            /* outfile << rworkers << ","
+                    << decompressionTime << "\n"; */
 
 
             // Reset times for the next set of workers
