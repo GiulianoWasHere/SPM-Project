@@ -312,13 +312,6 @@ struct L_Worker : ff_monode_t<Task_t>
           size_t numberOfBlocks;
           memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
 
-          size_t *vectorOfSizes = new size_t[numberOfBlocks*sizeOfT];
-
-          for (size_t j = 0; j < numberOfBlocks; ++j)
-          {
-            memcpy(&vectorOfSizes[j], ptr + sizeOfT * (j + 2), sizeof(size_t));
-          }
-
           unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
 
           size_t headerSize = sizeOfT * (numberOfBlocks + 2);
@@ -334,11 +327,10 @@ struct L_Worker : ff_monode_t<Task_t>
             t->uncompreFileSize = uncompressedFileSize;
             t->size = infile_size;
             t->readBytes = bytesRead;
-            memcpy(&t->cmp_size, &vectorOfSizes[j], sizeof(size_t));
+            memcpy(&t->cmp_size, ptr + sizeOfT * (j + 2), sizeof(size_t));
             bytesRead = bytesRead + t->cmp_size;
             ff_send_out(t);
           }
-          delete [] vectorOfSizes;
         }
       }
       return EOS;
