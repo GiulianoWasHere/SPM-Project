@@ -1,0 +1,505 @@
+FILE: 2GB DIMENSION: 2048 MB
+NODES: 3 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 21524 milliseconds.
+DECOMPRESSION:
+TIME MPI: 17044.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 15625.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15970.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 14475.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15741.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 14100.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15523.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 13906.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15431.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 13719 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15528.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 13522.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15502.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 13475.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15504.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 13127.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15493 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 13120.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15608.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 15266.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15992.8 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 16234.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 17790.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 17318.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15780.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 13571 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15820.8 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 13098.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15692.7 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 12838.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15531.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 12562.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15514.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 12155.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15696.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 12162.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15489.7 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 12134.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15575.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 12074.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15640.7 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 12247.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15686.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 13798.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15743.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 14355.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 17122.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 15514.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15296.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 12962.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15421.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 11819.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15710.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 12048.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15942.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 12260.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15676.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 12047.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15881.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 12159.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15598.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 12229 milliseconds.
+DECOMPRESSION:
+TIME MPI: 16066.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 11936.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15929.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 12200.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15701.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 12675.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15569.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 13494.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 16972.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 14429.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15872.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 12565.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15327.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 11899.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15580.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 11941.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15457 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 11505.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15483.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 11821.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 16018.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 11460.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15445.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 11439.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15251.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 11204.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15531.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 11565.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15461.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11886 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15511.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 13106.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 17008.6 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 13745.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15422.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 12073.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15525.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 11613.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15612.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 11538.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15652.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 11057.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15494 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 11439.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15591.8 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 11405.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15779.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10976.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15550.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 11355.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15571.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 11115.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15543.8 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 12037.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15470.4 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 12547 milliseconds.
+DECOMPRESSION:
+TIME MPI: 16989.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 12996 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15606.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 11497.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15321.9 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 11405.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15526.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 11284.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15586.5 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 11396.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15706.2 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 11208.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15538.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 11082.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15677.8 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 11343.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15760.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 11201.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15848.7 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 11238.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15610.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11961.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 15768.1 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 12395.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 17317.3 milliseconds.
+../LeFilze/2GB:is Identical!
+-----------------------

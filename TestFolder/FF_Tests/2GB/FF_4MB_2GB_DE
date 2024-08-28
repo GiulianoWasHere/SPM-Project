@@ -1,0 +1,673 @@
+FILE: 2GB DIMENSION: 2048 MB
+LWORKERS: 1 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27615 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16613 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 19084 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14049 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14794 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13055 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14871 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13013 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 14328 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12853 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13364 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13120 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12880 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13202 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 12369 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12959 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 12033 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12720 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 12007 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13137 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 11684 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13144 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 13810 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13111 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 28141 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16406 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17238 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14097 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14666 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13045 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14160 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12986 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13819 milliseconds
+DECOMPRESSION:
+Time FastFlow: 15431 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13243 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13252 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12786 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13002 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 12429 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13163 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 12616 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12789 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 12168 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12910 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14217 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12799 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 13968 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12935 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27477 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16502 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17498 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13965 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14634 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13066 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14105 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12914 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13770 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13183 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13230 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13096 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12686 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12954 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 12178 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12843 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 12245 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13018 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14572 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13125 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14114 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13073 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14100 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13221 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27546 milliseconds
+DECOMPRESSION:
+Time FastFlow: 17067 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17700 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14042 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14540 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13058 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14315 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13193 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13655 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13059 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13313 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13274 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12630 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13040 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 12365 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13037 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 14661 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13213 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14412 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12990 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14282 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13030 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14046 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13071 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27659 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16487 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17762 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13998 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14709 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13141 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14196 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13050 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13676 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13032 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13366 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13120 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12922 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13022 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 15037 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13207 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 14557 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13092 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14516 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13013 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14300 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12961 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14128 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12869 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27251 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16718 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17590 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14235 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14887 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13260 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14334 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13341 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13592 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13041 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 12973 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13263 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 12639 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13431 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 14671 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13100 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 14924 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13011 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14548 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13215 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14225 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13018 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14162 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12918 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27870 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16629 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 17728 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14356 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 14755 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13400 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14199 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13306 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13765 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13278 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13269 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13216 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 15419 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13787 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 15008 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13570 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 14515 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13549 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14540 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13297 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14438 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13117 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14136 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13168 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 27478 milliseconds
+DECOMPRESSION:
+Time FastFlow: 16678 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 18049 milliseconds
+DECOMPRESSION:
+Time FastFlow: 14301 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 15175 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13217 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 14127 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13020 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 13697 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13218 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 13092 milliseconds
+DECOMPRESSION:
+Time FastFlow: 12899 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 15558 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13300 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 14886 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13269 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 15203 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13267 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 14563 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13495 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 14443 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13230 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 14258 milliseconds
+DECOMPRESSION:
+Time FastFlow: 13418 milliseconds
+../LeFilze/2GB:is Identical!
+-----------------------
