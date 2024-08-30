@@ -6,9 +6,9 @@
 int main()
 {
     // Input and output file names
-    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/100Files/FF_4MB_100Files";
+    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/NEWWW/FF_4MB_100FILES_NEW";
     // std::string outputFile = "output1.csv";
-    std::string outputName = "FF_4MB_100Files";
+    std::string outputName = "FF_4MB_100FILES_NEW";
 
     std::ifstream infile(inputFile);
     std::ofstream outfile;
@@ -98,12 +98,13 @@ int main()
                     << compressionTime << "\n";*/
 
             //COMPRESSION TIME
-            outfile << rworkers << ","
-                    << compressionTime << "\n";
+           /*  outfile << rworkers << ","
+                    << compressionTime << "\n"; */
 
             //DECOMPRESSION TIME
-            /* outfile << rworkers << ","
-                    << decompressionTime << "\n"; */
+           
+            outfile << rworkers << ","
+                    << decompressionTime << "\n";
 
 
             // Reset times for the next set of workers

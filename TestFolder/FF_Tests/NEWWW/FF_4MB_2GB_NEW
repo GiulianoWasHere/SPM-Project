@@ -1,0 +1,673 @@
+FILE: 2GB DIMENSION: 2048 MB
+LWORKERS: 1 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20541 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5764 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 10596 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3446 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8056 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2635 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7582 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2408 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7143 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2308 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6546 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2217 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6213 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2116 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 5688 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2069 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 5565 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2035 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 5352 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1993 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 5221 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1953 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 1 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7341 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2499 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 21448 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5775 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 11224 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3465 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8067 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2678 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7795 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2436 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7033 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2312 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6624 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2209 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6031 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2131 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 5806 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2050 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 5574 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2018 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 5325 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1997 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7511 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2527 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 2 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7433 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2518 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20743 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5791 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 11036 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3496 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8188 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2684 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7733 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2426 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7015 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2317 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6691 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2211 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6081 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2134 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 5999 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2054 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 5496 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2024 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 7781 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2625 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7524 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2548 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 3 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7644 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2509 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20781 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5776 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 10901 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3507 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8062 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2690 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7722 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2417 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7153 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2314 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6758 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2239 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6117 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2131 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 5768 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2084 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 7956 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2608 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 7796 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2604 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7632 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2545 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 4 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7428 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2527 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20589 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5895 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 10939 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3540 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8241 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2688 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7525 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2435 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7015 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2329 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6555 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2219 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6140 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2145 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 8113 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2690 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 8008 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2639 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 7902 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2628 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 8061 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2541 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 5 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7393 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2551 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20886 milliseconds
+DECOMPRESSION:
+Time FastFlow: 5968 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 10919 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3559 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8221 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2705 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7492 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2447 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7095 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2329 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6596 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2230 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 6065 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2142 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 8212 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2711 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 8031 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2635 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 8046 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2626 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7803 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2540 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 6 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7740 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2557 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20819 milliseconds
+DECOMPRESSION:
+Time FastFlow: 6038 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 11008 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3577 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8076 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2684 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7562 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2441 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 7058 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2329 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6584 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2236 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 8991 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2792 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 8549 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2722 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 8071 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2624 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 8090 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2645 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7722 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2539 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 7 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7746 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2526 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 20712 milliseconds
+DECOMPRESSION:
+Time FastFlow: 6068 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 10947 milliseconds
+DECOMPRESSION:
+Time FastFlow: 3602 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 8198 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2692 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 7487 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2434 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 6985 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2328 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 6423 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2236 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 8716 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2837 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 8473 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2714 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 7989 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2634 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 7886 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2627 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 7759 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2564 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
+LWORKERS: 8 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 7599 milliseconds
+DECOMPRESSION:
+Time FastFlow: 2524 milliseconds
+/tmp/myjob/2GB:is Identical!
+-----------------------
