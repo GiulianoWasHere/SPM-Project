@@ -1,12 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=FF_100FILES     # Job name
-#SBATCH --output=JOB_FF_%j.txt     # OUTPUT
+#SBATCH --job-name=SEQ_100Files         # Job name
+#SBATCH --output=JOB_SEQ_%j.txt    # OUTPUT
 #SBATCH --nodes=1                  # Number of nodes
-#SBATCH --ntasks-per-node=1        # Number of tasks
-#SBATCH --time=02:00:00            # Time
+#SBATCH --time=01:00:00            # Time
 
 GENERATE_TXT=../generateTxt
-EXE_PATH=../FF_minizip
+EXE_PATH=../SEQ_minizip
 DELETE_SCRIPT=./deleteMiniz.sh
 CHECK_FILES=./checkFilze.sh
 #Files Info
@@ -25,19 +24,15 @@ do
     $GENERATE_TXT $DIMENSION_FILE $ScratchDir$FILENAME
 done
 
-for l in 1 2 4 6 8 10 12 14 16; do
-    for r in 4 8 16 20 22 24 26 28 29 30 31 32; do
-        echo "LWORKERS: $l RWORKERS: $r"
-        echo "COMPRESSION:"
-        $EXE_PATH c $ScratchDir $l $r
-        echo "DECOMPRESSION:"
-        $EXE_PATH d $ScratchDir $l $r
-        #Check if uncompressed and the original file are equal (100 Lines too long)
-        #$CHECK_FILES $ScratchDir
-        $DELETE_SCRIPT $ScratchDir
-        echo "-----------------------"
-    done
-done
+echo FILE: $NAME_OF_FILE DIMENSION: $DIMENSION_FILE MB
+$GENERATE_TXT $DIMENSION_FILE $ScratchDir$NAME_OF_FILE
+echo "COMPRESSION:"
+$EXE_PATH c $ScratchDir
+echo "DECOMPRESSION:"
+$EXE_PATH d $ScratchDir
+$CHECK_FILES $ScratchDir
+$DELETE_SCRIPT $ScratchDir
+echo "-----------------------"
 
 #Delete Files
 for i in $(seq $NUMBER_OF_FILES)

@@ -6,9 +6,9 @@
 int main()
 {
     // Input and output file names
-    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/NEWWW/FF_4MB_100FILES_NEW";
+    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/NEWWW/FF_4MB_SPEEDUP";
     // std::string outputFile = "output1.csv";
-    std::string outputName = "FF_4MB_100FILES_NEW";
+    std::string outputName = "FF_4MB_EFFICIENCY";
 
     std::ifstream infile(inputFile);
     std::ofstream outfile;
@@ -98,16 +98,36 @@ int main()
                     << compressionTime << "\n";*/
 
             //COMPRESSION TIME
-           /*  outfile << rworkers << ","
-                    << compressionTime << "\n"; */
+            /* outfile << rworkers << ","
+                    << (static_cast< float >(compressionTime)/1000) << "\n"; */
 
             //DECOMPRESSION TIME
            
-            outfile << rworkers << ","
-                    << decompressionTime << "\n";
+            /* outfile << rworkers << ","
+                    << (static_cast< float >(decompressionTime)/1000) << "\n"; */
+            
+            //SPEEDUP
 
+            //COMPRESSION TIME
+            /* outfile << rworkers+2 << ","
+                    << (static_cast< float >(75882)/static_cast< float >(compressionTime)) << "\n"; */
+
+            //DECOMPRESSION TIME
+           
+            /* outfile << rworkers+2 << ","
+                    << (static_cast< float >(18478)/static_cast< float >(decompressionTime)) << "\n"; */
 
             // Reset times for the next set of workers
+
+            //EFFICENCY 
+
+             //COMPRESSION TIME
+            outfile << rworkers+1 << ","
+                    << (static_cast< float >(75882)/(static_cast< float >(compressionTime) * rworkers+1)) << "\n";
+
+            /* outfile << rworkers+1 << ","
+                    << (static_cast< float >(18478)/(static_cast< float >(decompressionTime) * rworkers+1)) << "\n"; */
+            
             compressionTime = 0;
             decompressionTime = 0;
         }

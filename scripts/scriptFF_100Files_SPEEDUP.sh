@@ -25,14 +25,14 @@ do
     $GENERATE_TXT $DIMENSION_FILE $ScratchDir$FILENAME
 done
 
-for l in 1 2 4 6 8 10 12 14 16; do
-    for r in 4 8 16 20 22 24 26 28 29 30 31 32; do
+for l in 2; do
+    for r in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32; do
         echo "LWORKERS: $l RWORKERS: $r"
         echo "COMPRESSION:"
         $EXE_PATH c $ScratchDir $l $r
         echo "DECOMPRESSION:"
         $EXE_PATH d $ScratchDir $l $r
-        #Check if uncompressed and the original file are equal (100 Lines too long)
+        #Check if uncompressed and the original file are equal
         #$CHECK_FILES $ScratchDir
         $DELETE_SCRIPT $ScratchDir
         echo "-----------------------"
