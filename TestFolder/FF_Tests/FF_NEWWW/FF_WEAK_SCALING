@@ -1,0 +1,256 @@
+FILE: FILE DIMENSION: 100 MB
+LWORKERS: 1 RWORKERS: 1
+COMPRESSION:
+Time FastFlow: 3835 milliseconds
+DECOMPRESSION:
+Time FastFlow: 975 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 150 MB
+LWORKERS: 1 RWORKERS: 2
+COMPRESSION:
+Time FastFlow: 3014 milliseconds
+DECOMPRESSION:
+Time FastFlow: 772 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 200 MB
+LWORKERS: 1 RWORKERS: 3
+COMPRESSION:
+Time FastFlow: 2685 milliseconds
+DECOMPRESSION:
+Time FastFlow: 732 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 250 MB
+LWORKERS: 1 RWORKERS: 4
+COMPRESSION:
+Time FastFlow: 2543 milliseconds
+DECOMPRESSION:
+Time FastFlow: 721 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 300 MB
+LWORKERS: 1 RWORKERS: 5
+COMPRESSION:
+Time FastFlow: 2408 milliseconds
+DECOMPRESSION:
+Time FastFlow: 719 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 350 MB
+LWORKERS: 1 RWORKERS: 6
+COMPRESSION:
+Time FastFlow: 2428 milliseconds
+DECOMPRESSION:
+Time FastFlow: 744 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 400 MB
+LWORKERS: 1 RWORKERS: 7
+COMPRESSION:
+Time FastFlow: 2463 milliseconds
+DECOMPRESSION:
+Time FastFlow: 767 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 450 MB
+LWORKERS: 1 RWORKERS: 8
+COMPRESSION:
+Time FastFlow: 2406 milliseconds
+DECOMPRESSION:
+Time FastFlow: 765 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 500 MB
+LWORKERS: 1 RWORKERS: 9
+COMPRESSION:
+Time FastFlow: 2462 milliseconds
+DECOMPRESSION:
+Time FastFlow: 783 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 550 MB
+LWORKERS: 1 RWORKERS: 10
+COMPRESSION:
+Time FastFlow: 2408 milliseconds
+DECOMPRESSION:
+Time FastFlow: 813 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 600 MB
+LWORKERS: 1 RWORKERS: 11
+COMPRESSION:
+Time FastFlow: 2418 milliseconds
+DECOMPRESSION:
+Time FastFlow: 835 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 650 MB
+LWORKERS: 1 RWORKERS: 12
+COMPRESSION:
+Time FastFlow: 2508 milliseconds
+DECOMPRESSION:
+Time FastFlow: 861 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 700 MB
+LWORKERS: 1 RWORKERS: 13
+COMPRESSION:
+Time FastFlow: 2558 milliseconds
+DECOMPRESSION:
+Time FastFlow: 886 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 750 MB
+LWORKERS: 1 RWORKERS: 14
+COMPRESSION:
+Time FastFlow: 2535 milliseconds
+DECOMPRESSION:
+Time FastFlow: 916 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 800 MB
+LWORKERS: 1 RWORKERS: 15
+COMPRESSION:
+Time FastFlow: 2605 milliseconds
+DECOMPRESSION:
+Time FastFlow: 940 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 850 MB
+LWORKERS: 1 RWORKERS: 16
+COMPRESSION:
+Time FastFlow: 3314 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1091 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 900 MB
+LWORKERS: 1 RWORKERS: 17
+COMPRESSION:
+Time FastFlow: 3950 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1179 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 950 MB
+LWORKERS: 1 RWORKERS: 18
+COMPRESSION:
+Time FastFlow: 3979 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1209 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1000 MB
+LWORKERS: 1 RWORKERS: 19
+COMPRESSION:
+Time FastFlow: 4015 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1236 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1050 MB
+LWORKERS: 1 RWORKERS: 20
+COMPRESSION:
+Time FastFlow: 4030 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1255 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1100 MB
+LWORKERS: 1 RWORKERS: 21
+COMPRESSION:
+Time FastFlow: 4024 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1282 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1150 MB
+LWORKERS: 1 RWORKERS: 22
+COMPRESSION:
+Time FastFlow: 4055 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1298 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1200 MB
+LWORKERS: 1 RWORKERS: 23
+COMPRESSION:
+Time FastFlow: 4077 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1328 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1250 MB
+LWORKERS: 1 RWORKERS: 24
+COMPRESSION:
+Time FastFlow: 4059 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1347 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1300 MB
+LWORKERS: 1 RWORKERS: 25
+COMPRESSION:
+Time FastFlow: 3998 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1362 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1350 MB
+LWORKERS: 1 RWORKERS: 26
+COMPRESSION:
+Time FastFlow: 4007 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1391 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1400 MB
+LWORKERS: 1 RWORKERS: 27
+COMPRESSION:
+Time FastFlow: 4047 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1425 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1450 MB
+LWORKERS: 1 RWORKERS: 28
+COMPRESSION:
+Time FastFlow: 4106 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1440 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1500 MB
+LWORKERS: 1 RWORKERS: 29
+COMPRESSION:
+Time FastFlow: 4142 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1471 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1550 MB
+LWORKERS: 1 RWORKERS: 30
+COMPRESSION:
+Time FastFlow: 4120 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1499 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1600 MB
+LWORKERS: 1 RWORKERS: 31
+COMPRESSION:
+Time FastFlow: 4135 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1532 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1650 MB
+LWORKERS: 1 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 5679 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1949 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------

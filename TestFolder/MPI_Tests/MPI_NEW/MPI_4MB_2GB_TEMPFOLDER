@@ -1,0 +1,512 @@
+node01
+FILE: 2GB DIMENSION: 2048 MB
+2GB
+NODES: 3 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 13847.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 6425.73 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 8960.08 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5234.75 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 7552.18 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4844.45 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 7361.95 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4761.48 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 7060.78 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4663.45 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 6761.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4704.61 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 6563.11 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4649.38 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 6533.99 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4613.51 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 6334.22 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4544.87 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 6299.47 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4546.88 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 8162.04 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4680.45 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 3 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 9662.21 milliseconds.
+DECOMPRESSION:
+TIME MPI: 6807.73 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+2GB
+NODES: 4 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 10146.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5681.83 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 6935.07 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4493.85 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 5908.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4574.57 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 6126.17 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4175.5 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 5537.99 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4105.59 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 5516.63 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4490.17 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 5618.68 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4476.26 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 5630.14 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4415.1 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 5478.49 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4022.9 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 5011 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4381.58 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 6572.95 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4492.01 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 4 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 7818.13 milliseconds.
+DECOMPRESSION:
+TIME MPI: 6083.68 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+2GB
+NODES: 5 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 8250.05 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4806.87 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 6244.32 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4243.58 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 5323.34 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4043.88 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 5270.44 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4431.83 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 5259.21 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4105.22 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 5031.85 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3984.74 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 5084.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3933.65 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 5054.91 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3874.52 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 4965.03 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3938.13 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 5116.64 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3904.57 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 5932.78 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4245.5 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 5 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 6719.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 6062.59 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+2GB
+NODES: 6 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 7519.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4660.32 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 5834 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4618.35 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 5308.98 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4001.52 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 5248.85 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4441.87 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 4744.65 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4377.29 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 4792.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4053.13 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 4575.97 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3996.34 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 4612.68 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4016.89 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 4466.24 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3997.25 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 4458.56 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4380.28 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 5428.67 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4142.58 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 6 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 6359.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5822.2 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+2GB
+NODES: 7 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 6888.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4650.68 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 5462.91 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4149.37 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 5085.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4168.48 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 5029.49 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4001.21 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 4616.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4266.28 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 4522.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4283.67 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 4570.84 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4404.08 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 4680.55 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4000.54 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 4153.86 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4328.18 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 4569.43 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3935.42 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 5092.26 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4023.02 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 7 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 5685.53 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5607.02 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+2GB
+NODES: 8 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 6434.06 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4747.21 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 5181.94 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4204.3 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 4657.81 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3763.27 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 4545.99 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4131.48 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 4409.62 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3788.21 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 4421.03 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4273.27 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 4488.83 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3946.22 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 4309.22 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4165.62 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 4162.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4098.04 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 4151.63 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4291.33 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 5301.87 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4163.89 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------
+NODES: 8 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 5759.37 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5604.65 milliseconds.
+/tmp/myjob/2GB:is Identical!
+-----------------------

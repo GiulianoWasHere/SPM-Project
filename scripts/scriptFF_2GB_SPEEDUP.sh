@@ -10,6 +10,7 @@ DELETE_SCRIPT=./deleteMiniz.sh
 CHECK_FILES=./checkFilze.sh
 #Files Info
 ScratchDir="/tmp/myjob"  # create a name for the TEMP directory (The TXT file will be in the temp directory of the NODE)
+rm -rf ${ScratchDir}     # Making sure the folder hasn't file in it
 mkdir -p ${ScratchDir}   # make the directory
 ScratchDir="/tmp/myjob/"
 NAME_OF_FILE=2GB

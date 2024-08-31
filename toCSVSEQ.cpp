@@ -6,9 +6,9 @@
 int main()
 {
     // Input and output file names
-    std::string inputFile = "/home/giuliano/Desktop/SPM-Project/TestFolder/FF_Tests/NEWWW/FF_WEAK_SCALING";
+    std::string inputFile = "TestFolder/SEQ_Tests/SEQ_WEAKSCALING";
     // std::string outputFile = "output1.csv";
-    std::string outputName = "FF_WEAK_SCALING";
+    std::string outputName = "SEQ_WEAKSCALING";
 
     std::ifstream infile(inputFile);
     std::ofstream outfile;
@@ -17,6 +17,13 @@ int main()
     if (!infile.is_open())
     {
         std::cerr << "Could not open input file.\n";
+        return 1;
+    }
+
+    outfile.open(outputName + ".csv");
+    if (!outfile.is_open())
+    {
+        std::cerr << "Could not open output file.\n";
         return 1;
     }
 
@@ -65,7 +72,7 @@ int main()
                 outfile << csvHeader;
             }
         }
-        else if (line.find("Time FastFlow:") != std::string::npos)
+        else if (line.find("Time Sequential: ") != std::string::npos)
         {
             // Extracting Time (either Compression or Decompression)
             std::istringstream ss(line);
@@ -73,7 +80,8 @@ int main()
             int time;
             ss >> ignore >> ignore >> time >> ignore;
 
-            // Determine whether this time is for compression or decompression
+            // std::cout <<"SSSSSSSSSSSSSSSSS\n";
+            //  Determine whether this time is for compression or decompression
             if (compressionTime == 0)
             {
                 compressionTime = time;
@@ -97,47 +105,38 @@ int main()
             /*outfile << lworkers << "," << rworkers << ","
                     << compressionTime << "\n";*/
 
-            //COMPRESSION TIME
+            // COMPRESSION TIME
             /* outfile << rworkers << ","
                     << (static_cast< float >(compressionTime)/1000) << "\n"; */
 
-            //DECOMPRESSION TIME
-           
+            // DECOMPRESSION TIME
+
             /* outfile << rworkers << ","
                     << (static_cast< float >(decompressionTime)/1000) << "\n"; */
-            
-            //SPEEDUP
 
-            //COMPRESSION TIME
+            // SPEEDUP
+
+            // COMPRESSION TIME
             /* outfile << rworkers+2 << ","
                     << (static_cast< float >(75882)/static_cast< float >(compressionTime)) << "\n"; */
 
-            //DECOMPRESSION TIME
-           
+            // DECOMPRESSION TIME
+
             /* outfile << rworkers+2 << ","
                     << (static_cast< float >(18478)/static_cast< float >(decompressionTime)) << "\n"; */
 
             // Reset times for the next set of workers
 
-            //EFFICENCY 
+            // EFFICENCY
 
-             //COMPRESSION TIME
+            // COMPRESSION TIME
             /* outfile << rworkers+1 << ","
                     << (static_cast< float >(75882)/(static_cast< float >(compressionTime) * rworkers+1)) << "\n"; */
 
             /* outfile << rworkers+1 << ","
                     << (static_cast< float >(18478)/(static_cast< float >(decompressionTime) * rworkers+1)) << "\n"; */
-            
-            /* outfile << compressionTime << "\n"; */
 
-
-            //WEAK SCALING
-
-            /* outfile << rworkers + lworkers << ","
-                    << compressionTime << "\n"; */
-
-            outfile 
-                    << compressionTime * (rworkers + lworkers) << "\n";
+            outfile << decompressionTime << "\n";
             compressionTime = 0;
             decompressionTime = 0;
         }
@@ -147,7 +146,7 @@ int main()
     infile.close();
     outfile.close();
 
-    //std::cout << "Transformation complete. Data written to " << "\n";
+    // std::cout << "Transformation complete. Data written to " << "\n";
 
     return 0;
 }
