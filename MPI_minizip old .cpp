@@ -24,7 +24,7 @@ using namespace ff;
 #include <utility.hpp>
 #include <mpi.h>
 #include <omp.h>
-#include <filesystem>
+
 struct FileStruct
 {
   std::string filename;
@@ -63,6 +63,16 @@ struct Task_t
   size_t uncompreFileSize = 0;     // Size of the uncompressed file
   const std::string filename;      // source file name
 };
+
+int shuffleID(int z, int numberOfWorkers, int id)
+{
+    return ((z + id) % numberOfWorkers)+1;
+}
+
+int inverseShuffleIDForZ(int numberOfWorkers, int id, int result)
+{
+    return (result - 1 - id + numberOfWorkers) % numberOfWorkers;
+}
 
 static inline bool addFileToVector(const char fname[], size_t size, const bool comp, std::vector<FileStruct> &FilesVector)
 {
@@ -205,7 +215,8 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
     //  std::cout << "SIZE OF counts:" << counts[j] << "\n";
     if (counts[j] != 0)
     {
-      MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, j + numP - numW, idFile, MPI_COMM_WORLD, &rq_send[j]);
+      std::cout << "SENDING TO: " << shuffleID(j + 1,numW,idFile) << " J is : " << j << "\n";
+      MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, shuffleID(j + 1,numW,idFile), idFile, MPI_COMM_WORLD, &rq_send[j]);
       sentMessages++;
     }
   }
@@ -243,11 +254,12 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
 
       //  std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
       compressFileSize += countElements - sizeOfT;
-      compressedByWorkerSize[status.MPI_SOURCE - 1] = countElements - sizeOfT * (nblocks + 1);
+      std::cout << "RECEIVING FROM: " << status.MPI_SOURCE << "J final is : " << inverseShuffleIDForZ(numW, idFile, status.MPI_SOURCE) - 1 << "\n";
+      compressedByWorkerSize[inverseShuffleIDForZ(numW, idFile, status.MPI_SOURCE)] = countElements - sizeOfT * (nblocks + 1);
       //  std::cout << "COMPRESSED WORKER SIZE: " << compressedByWorkerSize[status.MPI_SOURCE-1] << "\n";
       //  std::cout << "COMPRESSED COUNTS: " << countElements << "\n";
-      activeWorkers[status.MPI_SOURCE - 1] = nblocks;
-      FilesVector[idFile].arrayOfPointers[status.MPI_SOURCE - 1] = ptrIN;
+      activeWorkers[inverseShuffleIDForZ(numW, idFile, status.MPI_SOURCE)] = nblocks;
+      FilesVector[idFile].arrayOfPointers[inverseShuffleIDForZ(numW, idFile, status.MPI_SOURCE)] = ptrIN;
     }
 
     //  std::cout << "COMPRESSED FILE SIZE:" << compressFileSize << "\n";
@@ -571,7 +583,7 @@ struct L_Worker : ff_monode_t<Task_t>
         {
           //  Get an estimate of the data to recive
           int idFile = mpitag;
-          int estimation = (FilesVector[idFile].size * 3 / BIGFILE_LOW_THRESHOLD + 1) / numW;
+          int estimation = (FilesVector[idFile].size * 2 / BIGFILE_LOW_THRESHOLD + 1) / numW;
           estimation *= sizeOfT;
           //  std::cout << myId << " estimation:" << estimation << "\n";
           unsigned char *ptrIN = new unsigned char[estimation];
@@ -878,23 +890,8 @@ int main(int argc, char *argv[])
   // std::vector<FileStruct> FilesVector;
 
   // Handle of the master
-  if (myId == 0)
+  if (!myId)
   {
-    /* int world_size;
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-    // Get the rank of the process
-    int world_rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-    // Get the name of the processor
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
-    int name_len;
-    MPI_Get_processor_name(processor_name, &name_len);
-
-    // Print off a hello world message
-    printf("Hello world from processor %s, rank %d out of %d processors\n", processor_name, world_rank, world_size); */
-    
 
     if (stat(argv[2], &statbuf) == -1)
     {
@@ -903,7 +900,6 @@ int main(int argc, char *argv[])
       MPI_Abort(MPI_COMM_WORLD, -1);
       return -1;
     }
-
     // Walks in the directory and add the filenames in the FileVector
     if (S_ISDIR(statbuf.st_mode))
     {
@@ -934,7 +930,7 @@ int main(int argc, char *argv[])
     }
 
     //------------------------------------------
-#pragma omp parallel for
+//#pragma omp parallel for
     for (int i = 0; i < sizeVector; ++i)
     {
       if (FilesVector[i].size > BIGFILE_LOW_THRESHOLD)

@@ -1,21 +1,3 @@
-/*
- * Simple file compressor/decompressor using Miniz and the FastFlow
- * building blocks
- *
- * Miniz source code: https://github.com/richgel999/miniz
- * https://code.google.com/archive/p/miniz/
- *
- * FastFlow: https://github.com/fastflow/fastflow
- *
- * Author: Massimo Torquati <massimo.torquati@unipi.it>
- *
- * This software is provided 'as-is', without any express or implied
- * warranty. In no event will the author be held liable for any damages
- * arising from the use of this software.
- * Permission is granted to anyone to use this software for any purpose.
- *
- */
-
 #if !defined _UTILITY_HPP
 #define _UTILITY_HPP
 
@@ -46,9 +28,9 @@
 // global variables with their default values -------------------------------------------------
 static bool comp = true;					   // by default, it compresses
 //static size_t BIGFILE_LOW_THRESHOLD = 1048576; // 1Mbyte
-//static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes
+static size_t BIGFILE_LOW_THRESHOLD = 2097152; // 2Mbytes
 //static size_t BIGFILE_LOW_THRESHOLD = 3145728; // 3Mbyte
-static size_t BIGFILE_LOW_THRESHOLD = 4194304; // 4Mbyte
+//static size_t BIGFILE_LOW_THRESHOLD = 4194304; // 4Mbyte
 //static size_t BIGFILE_LOW_THRESHOLD = 5242880; // 5Mbyte
 //static size_t BIGFILE_LOW_THRESHOLD = 6291456; // 6Mbyte
 //static size_t BIGFILE_LOW_THRESHOLD = 8388608; // 8Mbyte
@@ -56,9 +38,9 @@ static size_t BIGFILE_LOW_THRESHOLD = 4194304; // 4Mbyte
 //static size_t BIGFILE_LOW_THRESHOLD = 33554432; // 32Mbyte 
 //static size_t BIGFILE_LOW_THRESHOLD = 67108864; // 64Mbyte 
 //static size_t BIGFILE_LOW_THRESHOLD = 134217728; // 128Mbyte 
-static bool REMOVE_ORIGIN = false;			   // Does it keep the origin file?
+static bool REMOVE_ORIGIN = false;			   // Does it keep the origin file? NOT USED
 static int QUITE_MODE = 1;					   // 0 silent, 1 only errors, 2 everything
-static bool RECUR = false;					   // do we have to process the contents of subdirs?
+static bool RECUR = false;					   // do we have to process the contents of subdirs? NOT USED
 // --------------------------------------------------------------------------------------------
 
 // map the file pointed by filepath in memory
@@ -433,9 +415,6 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	const std::string infilename(fname);
 
 	// If the file doesn't end with zip it skips the file
-	
-	// ************RIMETTERE*****************************
-	//VISUAL STUDIO ERROR BUT WITH C++ 20 it is good! 
 	if(!ends_with(infilename,SUFFIX)) return 0;
 
 	//Remove the .miniz
@@ -456,25 +435,18 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 	}
 	outfilename = tempFileName;
 
-	//std::fprintf(stderr, "%s \n", outfilename.c_str());
-
 	size_t sizeOfT = sizeof(size_t);
 	unsigned char *ptr = nullptr;
 	if (!mapFile(fname, infile_size, ptr))
 		return -1;
-
-	//std::fprintf(stderr, "file size: %zu \n", infile_size);
+	
 	// Size of the uncompressed file taken from the header
 	size_t uncompressedFileSize;
 	memcpy(&uncompressedFileSize, ptr, sizeof(size_t));
 
-	//std::fprintf(stderr, "uncompressedFileSize : %zu \n", uncompressedFileSize);
-
 	// Number of blocks taken from header
 	size_t numberOfBlocks;
 	memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
-
-	//std::fprintf(stderr, "number of Blocks: %zu \n", numberOfBlocks);
 
 	unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
 
@@ -489,7 +461,6 @@ static inline int decompressFile(const char fname[], size_t infile_size,
 		//Get the size of the block from the header of the file
 		memcpy(&sizeUncompBlock, ptr + sizeOfT * (i + 2), sizeof(size_t));
 
-		//std::fprintf(stderr, "size Uncomp Block: %zu \n", sizeUncompBlock);
 		unsigned long cmp_len = BIGFILE_LOW_THRESHOLD + BIGFILE_LOW_THRESHOLD;
 		if (uncompress((ptrOut + tot), &cmp_len, (const unsigned char *)(ptr + readBytes), sizeUncompBlock) != MZ_OK)
 		{

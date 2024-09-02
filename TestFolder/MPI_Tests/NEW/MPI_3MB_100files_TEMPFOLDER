@@ -1,0 +1,1154 @@
+NUMBER OF FILES: 100 EACH: 20 MB
+NODES: 3 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 41510 milliseconds.
+DECOMPRESSION:
+TIME MPI: 11402.9 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 22825.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5635.28 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 13949.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5059.32 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 11341.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3932.02 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 9518.28 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3925.25 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 8925.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4013.98 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7886.84 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4008.61 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 7770.57 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3902.32 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7824 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3897.58 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 7918.13 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3958.31 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7936.65 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3943.31 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7918.18 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3887.19 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7825.59 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3863.53 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 7867.17 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3949.45 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7844.71 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3932.2 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 9022.98 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4076.54 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 10205.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4086.09 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9729.88 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4577.52 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 10282.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4153.77 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 10458.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4721.71 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 10299.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4250.58 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 10741.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4279.4 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 10632.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4199.14 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10888.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4360.92 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 10461.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4356.27 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10497.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4354.91 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10514.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4300.21 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10471.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4327.31 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10476.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4447.74 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10371.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4330.41 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 12170.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4877.19 milliseconds.
+-----------------------
+NODES: 3 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 13735 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5849.37 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 30445.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 8950.85 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 15169.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4980.82 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 11349.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3892 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 8851.07 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3906.22 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 7706.24 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3862.61 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 7746.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3913.55 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7712.17 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4094.59 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 7687.54 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3886.65 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7663.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3891.59 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 7689.41 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3960.69 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7885.01 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3979.28 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7814.17 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3873.16 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7660.83 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3861.09 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 7716.61 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4149.45 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7722.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3880.47 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 8697.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4065.41 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 9675.97 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3920.36 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9597.21 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3972.27 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 9567.41 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4009.24 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 9823.77 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4114.87 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 9777.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4122.82 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 10107.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4152.59 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 9996.12 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4227.69 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10173.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4432.41 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 10248.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4209.24 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10264.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4199.72 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10284.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4409.59 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10225.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4294.85 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10280.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4280.83 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10323.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4377.59 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11800.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4555.85 milliseconds.
+-----------------------
+NODES: 4 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 13119.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5700.61 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 30170 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5688.32 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 15082.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3923.88 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 11323.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3902.06 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 8833.98 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3862.3 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 7654.28 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3824.08 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 7624.62 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3806.36 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7740.79 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3874.52 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 7814.71 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3853.96 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7722.96 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4094.66 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 7674.07 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3822.49 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7688.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3869.37 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7694.31 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3836.97 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7589.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3855.79 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 7890.89 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4063.15 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7748.47 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3844.1 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 8625.71 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3943.23 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 9385.76 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3979.38 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9633.34 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4068.3 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 9947.06 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4033.51 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 10241.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4095.16 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 10105.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4113.93 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 10320.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4105.4 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 10062 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4443.98 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10141.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4205.51 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 10223.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4214.73 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10211.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4174.2 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10233.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4411.07 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10216.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4262.57 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10264.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4275.63 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10423.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4242.92 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11812.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4463.11 milliseconds.
+-----------------------
+NODES: 5 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 13244.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5554.28 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 30113 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5640.25 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 15096.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3810.15 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 11336.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3831.24 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 8846.86 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3758.7 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 7535 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3808.9 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 7645.19 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3878.05 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7561.79 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3810.39 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 7771.84 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4211.55 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7571.43 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3790.8 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 8040.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3841.53 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7638.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3818.84 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7627.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3801.37 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7799.61 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3832.81 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 7670.13 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3877.76 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7751.98 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3842.37 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 8254.53 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3967.83 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 8825.35 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3967.65 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9138.42 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4014.68 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 9693.94 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4049.05 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 10164.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4102.07 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 9886.54 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4035.23 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 9803.93 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4050.33 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 9972.69 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4177.5 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10044.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4131.9 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 9998.26 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4172.34 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10180.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4502.01 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10123.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4262.97 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10195.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4285.92 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10429.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4423.57 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10291.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4247.47 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11558.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4724.27 milliseconds.
+-----------------------
+NODES: 6 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 12656.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5573.74 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 18874.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 6023.79 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 11365.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3850.72 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 7601.59 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3829.06 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 7552.46 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3865.33 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 7559.68 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3894.88 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 7580.35 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3878.06 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7537.02 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3856.13 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 7561.51 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3810.32 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7544.97 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3828.74 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 7588.93 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3831.24 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7605.31 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3792.77 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7603.09 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3889.33 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7537.59 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3843.55 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 8081.05 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3839 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7572.05 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3849.96 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 8421.29 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3866.67 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 8601.42 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3973.57 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9104 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3973.22 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 9251.59 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3968.21 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 9473.43 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3999.88 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 9686.61 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4052.48 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 9986.74 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4116.19 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 10046.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4125.55 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10038.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4120.53 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 10075.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4137.4 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10112 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4193.43 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10118.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4201.66 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10182.4 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4215.87 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10122.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4249.69 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10099.5 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4278.1 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11392.7 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4425.94 milliseconds.
+-----------------------
+NODES: 7 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 12315.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5720.54 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 1
+COMPRESSION:
+TIME MPI: 19277.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3839.25 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 2
+COMPRESSION:
+TIME MPI: 11623.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3864.34 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 3
+COMPRESSION:
+TIME MPI: 7574.11 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3834.5 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 4
+COMPRESSION:
+TIME MPI: 7550.47 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3793.53 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 5
+COMPRESSION:
+TIME MPI: 7544.77 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3857.07 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 6
+COMPRESSION:
+TIME MPI: 7595.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3814.21 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 7
+COMPRESSION:
+TIME MPI: 7608.27 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3873.91 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 8
+COMPRESSION:
+TIME MPI: 8015.87 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3877.97 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 9
+COMPRESSION:
+TIME MPI: 7558.26 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3816.01 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 10
+COMPRESSION:
+TIME MPI: 7625.03 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3880.95 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 11
+COMPRESSION:
+TIME MPI: 7613.06 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3847.3 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 12
+COMPRESSION:
+TIME MPI: 7545.26 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3862.6 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 13
+COMPRESSION:
+TIME MPI: 7571.14 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3887.94 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 14
+COMPRESSION:
+TIME MPI: 7703.56 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4074.86 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 15
+COMPRESSION:
+TIME MPI: 7619.57 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3847.12 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 16
+COMPRESSION:
+TIME MPI: 8234.64 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3893.5 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 17
+COMPRESSION:
+TIME MPI: 8553.17 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3925.89 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 18
+COMPRESSION:
+TIME MPI: 9088.19 milliseconds.
+DECOMPRESSION:
+TIME MPI: 3995.01 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 19
+COMPRESSION:
+TIME MPI: 9259.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4036.4 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 20
+COMPRESSION:
+TIME MPI: 9450.92 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4012.73 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 21
+COMPRESSION:
+TIME MPI: 9681.71 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4055.18 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 22
+COMPRESSION:
+TIME MPI: 10323.3 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4060.57 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 23
+COMPRESSION:
+TIME MPI: 10092 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4096.14 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 24
+COMPRESSION:
+TIME MPI: 10069.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4131.36 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 25
+COMPRESSION:
+TIME MPI: 10149.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4111.9 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 26
+COMPRESSION:
+TIME MPI: 10105.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4147.06 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 27
+COMPRESSION:
+TIME MPI: 10133.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4122.42 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 28
+COMPRESSION:
+TIME MPI: 10185.8 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4143.6 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 29
+COMPRESSION:
+TIME MPI: 10138.9 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4178.43 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 30
+COMPRESSION:
+TIME MPI: 10112.6 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4198.73 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 31
+COMPRESSION:
+TIME MPI: 11717.1 milliseconds.
+DECOMPRESSION:
+TIME MPI: 4375.03 milliseconds.
+-----------------------
+NODES: 8 RWORKERS: 32
+COMPRESSION:
+TIME MPI: 12314.2 milliseconds.
+DECOMPRESSION:
+TIME MPI: 5686.61 milliseconds.
+-----------------------
+

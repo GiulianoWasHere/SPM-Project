@@ -1,20 +1,3 @@
-/*
- * miniz source code: https://github.com/richgel999/miniz
- * https://code.google.com/archive/p/miniz/
- *
- * This is an extended version of the example3.c file distributed with the miniz.c.
- * --------------------
- * example3.c - Demonstrates how to use miniz.c's deflate() and inflate() functions for simple file compression.
- * Public domain, May 15 2011, Rich Geldreich, richgel99@gmail.com. See "unlicense" statement at the end of tinfl.c.
- * For simplicity, this example is limited to files smaller than 4GB, but this is not a limitation of miniz.c.
- * -------------------
- *
- */
-/* Author: Massimo Torquati <massimo.torquati@unipi.it>
- * This code is a mix of POSIX C code and some C++ library call
- * (mainly for strings manipulation).
- */
-
 #include <utility.hpp>
 
 static inline void usage(const char *argv0)
@@ -72,6 +55,5 @@ int main(int argc, char *argv[])
     }
     const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
     std::cout << "Time Sequential: " << duration.count() << " milliseconds" << std::endl;
-    //printf("Exiting with Success\n");
     return 0;
 }

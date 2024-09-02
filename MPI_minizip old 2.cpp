@@ -24,7 +24,7 @@ using namespace ff;
 #include <utility.hpp>
 #include <mpi.h>
 #include <omp.h>
-#include <filesystem>
+
 struct FileStruct
 {
   std::string filename;
@@ -571,7 +571,7 @@ struct L_Worker : ff_monode_t<Task_t>
         {
           //  Get an estimate of the data to recive
           int idFile = mpitag;
-          int estimation = (FilesVector[idFile].size * 3 / BIGFILE_LOW_THRESHOLD + 1) / numW;
+          int estimation = (FilesVector[idFile].size * 2 / BIGFILE_LOW_THRESHOLD + 1) / numW;
           estimation *= sizeOfT;
           //  std::cout << myId << " estimation:" << estimation << "\n";
           unsigned char *ptrIN = new unsigned char[estimation];
@@ -878,23 +878,8 @@ int main(int argc, char *argv[])
   // std::vector<FileStruct> FilesVector;
 
   // Handle of the master
-  if (myId == 0)
+  if (!myId)
   {
-    /* int world_size;
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-    // Get the rank of the process
-    int world_rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-    // Get the name of the processor
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
-    int name_len;
-    MPI_Get_processor_name(processor_name, &name_len);
-
-    // Print off a hello world message
-    printf("Hello world from processor %s, rank %d out of %d processors\n", processor_name, world_rank, world_size); */
-    
 
     if (stat(argv[2], &statbuf) == -1)
     {
@@ -903,7 +888,6 @@ int main(int argc, char *argv[])
       MPI_Abort(MPI_COMM_WORLD, -1);
       return -1;
     }
-
     // Walks in the directory and add the filenames in the FileVector
     if (S_ISDIR(statbuf.st_mode))
     {

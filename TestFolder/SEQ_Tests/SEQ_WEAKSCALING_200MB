@@ -1,0 +1,49 @@
+FILE: FILE DIMENSION: 400 MB
+COMPRESSION:
+Time Sequential: 14093 milliseconds
+DECOMPRESSION:
+Time Sequential: 3614 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 600 MB
+COMPRESSION:
+Time Sequential: 21111 milliseconds
+DECOMPRESSION:
+Time Sequential: 5413 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 800 MB
+COMPRESSION:
+Time Sequential: 28178 milliseconds
+DECOMPRESSION:
+Time Sequential: 7228 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1000 MB
+COMPRESSION:
+Time Sequential: 35238 milliseconds
+DECOMPRESSION:
+Time Sequential: 9034 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1200 MB
+COMPRESSION:
+Time Sequential: 42347 milliseconds
+DECOMPRESSION:
+Time Sequential: 10830 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1400 MB
+COMPRESSION:
+Time Sequential: 49249 milliseconds
+DECOMPRESSION:
+Time Sequential: 12636 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
+FILE: FILE DIMENSION: 1600 MB
+COMPRESSION:
+Time Sequential: 56252 milliseconds
+DECOMPRESSION:
+Time Sequential: 14444 milliseconds
+/tmp/myjob/FILE:is Identical!
+-----------------------
