@@ -1,18 +1,3 @@
-//
-// This example shows how to use the all2all (A2A) building block (BB).
-// It finds the prime numbers in the range (n1,n2) using the A2A.
-//
-//          L-Worker --|   |--> R-Worker --|
-//                     |-->|--> R-Worker --|
-//          L-Worker --|   |--> R-Worker --|
-//
-//
-//  -   Each L-Worker manages a partition of the initial range. It sends sub-partitions
-//      to the R-Workers in a round-robin fashion.
-//  -   Each R-Worker checks if the numbers in each sub-partition received are
-//      prime by using the is_prime function
-//
-
 #include <atomic>
 #include <cmath>
 #include <string>
@@ -236,6 +221,7 @@ struct L_Worker : ff_monode_t<Task_t>
       // the files are divided for each worker
       if (compressing) //***********COMPRESSING********
       {
+        //Each Worker will read numberOfTasks files
         for (size_t i = 0; i < numberOfTasks; ++i)
         {
           size_t idFile = id + i * NumberOfLWorkers;
@@ -258,9 +244,11 @@ struct L_Worker : ff_monode_t<Task_t>
           if (partialblock)
             numberOfBlocks++;
 
+          //This two arrays are used to store the pointers of the compressed data and the size of each block
           FilesVector[idFile].arrayOfPointers = new unsigned char *[numberOfBlocks];
           FilesVector[idFile].sizeOfBlocks = new size_t[numberOfBlocks];
-
+          
+          //Sending task to the workers
           for (size_t j = 0; j < fullblocks; ++j)
           {
             Task_t *t = new Task_t(infilename);
@@ -289,6 +277,7 @@ struct L_Worker : ff_monode_t<Task_t>
       }
       else //***********DECOMPRESSING********
       {
+        //Each Worker will read numberOfTasks files
         for (size_t i = 0; i < numberOfTasks; ++i)
         {
           size_t idFile = id + i * NumberOfLWorkers;
@@ -312,17 +301,20 @@ struct L_Worker : ff_monode_t<Task_t>
           size_t numberOfBlocks;
           memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
 
-          size_t *vectorOfSizes = new size_t[numberOfBlocks*sizeOfT];
 
+          //In this vectore the length of each block is stored
+          size_t *vectorOfSizes = new size_t[numberOfBlocks*sizeOfT];
           for (size_t j = 0; j < numberOfBlocks; ++j)
           {
             memcpy(&vectorOfSizes[j], ptr + sizeOfT * (j + 2), sizeof(size_t));
           }
 
+          //creation of an array with length of the uncompressed file bytes
           unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
 
           size_t headerSize = sizeOfT * (numberOfBlocks + 2);
           size_t bytesRead = headerSize;
+          //Send to workers
           for (size_t j = 0; j < numberOfBlocks; ++j)
           {
             Task_t *t = new Task_t(infilename);
@@ -418,11 +410,9 @@ struct R_Worker : ff_monode_t<Task_t>
   R_Worker(const size_t Lw) : Lw(Lw) {}
   Task_t *svc(Task_t *in)
   {
-    // SendToWriter
-    // printTask(in);
     if (compressing) //***********COMPRESSING********
     {
-
+      //Creation of an array of char to store the compressed block
       size_t estimation = compressBound(in->cmp_size);
       unsigned char *ptrCompress = new unsigned char[estimation];
       if (compress((ptrCompress), &estimation, in->ptrOut, in->cmp_size) != Z_OK)
@@ -476,6 +466,7 @@ int main(int argc, char *argv[])
   //TIMER
   const auto start = std::chrono::steady_clock::now();
 
+  //Number of Left Workers and Right Workers
   const size_t Lw = std::stol(argv[3]);
   const size_t Rw = std::stol(argv[4]);
 
@@ -487,7 +478,6 @@ int main(int argc, char *argv[])
     return -1;
   }
   bool dir = false;
-  // std::vector<FileStruct> FilesVector;
 
   // Walks in the directory and add the filenames in the FileVector
   if (S_ISDIR(statbuf.st_mode))
@@ -499,6 +489,7 @@ int main(int argc, char *argv[])
     success &= addFileToVector(argv[2], statbuf.st_size, compressing, FilesVector);
   }
 
+  //Vector of atomic int used to count the blocks received by each Left worker
   std::vector<std::atomic<int>> vectorOfCounters(FilesVector.size());
 
   std::vector<ff_node *> LW;
@@ -523,22 +514,12 @@ int main(int argc, char *argv[])
   a2a.add_firstset(LW);
   a2a.add_secondset(RW);
   a2a.wrap_around(); 
-
-  
   
   if (a2a.run_and_wait_end() < 0)
   {
     error("running a2a\n");
     return -1;
   } 
-  /* for(int i;i<LW.size();++i)
-  {
-    delete LW[i];
-  }
-  for(int i;i<RW.size();++i)
-  {
-    delete RW[i];
-  } */
   
   if (!success)
   {
@@ -547,6 +528,5 @@ int main(int argc, char *argv[])
   }
   const auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - start);
   std::cout << "Time FastFlow: " << duration.count() << " milliseconds" << std::endl;
-  //printf("Exiting with Success\n");
   return 0;
 }

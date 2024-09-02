@@ -1,18 +1,3 @@
-//
-// This example shows how to use the all2all (A2A) building block (BB).
-// It finds the prime numbers in the range (n1,n2) using the A2A.
-//
-//          L-Worker --|   |--> R-Worker --|
-//                     |-->|--> R-Worker --|
-//          L-Worker --|   |--> R-Worker --|
-//
-//
-//  -   Each L-Worker manages a partition of the initial range. It sends sub-partitions
-//      to the R-Workers in a round-robin fashion.
-//  -   Each R-Worker checks if the numbers in each sub-partition received are
-//      prime by using the is_prime function
-//
-
 #include <atomic>
 #include <cmath>
 #include <string>
@@ -175,13 +160,11 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
   if (partialblock)
     numberOfBlocks++;
 
-  //  std::cout << infilename.c_str() << "\n";
-  //  std::cout << omp_get_thread_num() << "\n";
-
   std::vector<int> counts(numW);
   std::vector<int> displs(numW);
   int max = 0;
 
+  // Here we split the data between the other nodes, we send X nodes to each node in one message
   for (int j = 0; j < numW; ++j)
   {
     auto start = (fullblocks * j / (numW)) * BIGFILE_LOW_THRESHOLD;
@@ -196,13 +179,11 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
 
   MPI_Request rq_send[numW];
   MPI_Status statuses[numW];
-
-  //  std::cout << "numberOFWorkers:" << numW << "\n";
   int loopLength = (numW == numP) ? numP : numW;
   int sentMessages = 0;
+  // Send the data to the workers
   for (int j = (numW == numP) ? 1 : 0; j < loopLength; ++j)
   {
-    //  std::cout << "SIZE OF counts:" << counts[j] << "\n";
     if (counts[j] != 0)
     {
       MPI_Isend((ptr + displs[j]), counts[j], MPI_UNSIGNED_CHAR, j + numP - numW, idFile, MPI_COMM_WORLD, &rq_send[j]);
@@ -210,7 +191,7 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
     }
   }
 
-  //  std::cout << "BOP" << "\n";
+  // This vector is used to
   FilesVector[idFile].arrayOfPointers = new unsigned char *[numW];
   int activeWorkers[numW];
   for (int j = 0; j < numW; ++j)
@@ -223,34 +204,31 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
     // size of the first 2 sizeof t in the header
     size_t compressFileSize = sizeOfT * 2;
     size_t compressedByWorkerSize[numW];
-    //  std::cout << "BIP" << "\n";
+    // Some nodes may not receive any data to process so we use sent messages
     for (int j = 0; j < sentMessages; ++j)
     {
       MPI_Request rq_recv;
       MPI_Status status;
+      // We estimate the data to receive
       int estimatedSize = max + BIGFILE_LOW_THRESHOLD * 4;
       unsigned char *ptrIN = new unsigned char[estimatedSize];
-
-      //  std::cout << "ESTIMATED SIZE: " << estimatedSize << " CHUNKSIZE EXPECTED: " << FilesVector[idFile].size / numW << " FILENAME " << FilesVector[idFile].filename << "\n";
       MPI_Irecv(ptrIN, estimatedSize, MPI_UNSIGNED_CHAR, MPI_ANY_SOURCE, idFile, MPI_COMM_WORLD, &rq_recv);
-      //  std::cout << "BIP4" << "\n";
       MPI_Wait(&rq_recv, &status);
       int countElements;
       MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
       size_t nblocks;
 
       memcpy(&nblocks, ptrIN, sizeOfT);
-
-      //  std::cout << "MASTER RECIVED " << nblocks << "FROM " << status.MPI_SOURCE << "\n";
+      // we keep track of the size of the compressed file
       compressFileSize += countElements - sizeOfT;
+      // Number of bytes compressed by the worker
       compressedByWorkerSize[status.MPI_SOURCE - 1] = countElements - sizeOfT * (nblocks + 1);
-      //  std::cout << "COMPRESSED WORKER SIZE: " << compressedByWorkerSize[status.MPI_SOURCE-1] << "\n";
-      //  std::cout << "COMPRESSED COUNTS: " << countElements << "\n";
+      // Use this variable to know which workers are active and the number of blocks they have compressed
       activeWorkers[status.MPI_SOURCE - 1] = nblocks;
+      // store the pointer
       FilesVector[idFile].arrayOfPointers[status.MPI_SOURCE - 1] = ptrIN;
     }
 
-    //  std::cout << "COMPRESSED FILE SIZE:" << compressFileSize << "\n";
     //  Creation header
     unsigned char *ptrHeader = new unsigned char[sizeOfT * (numberOfBlocks + 2)];
 
@@ -262,9 +240,9 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
     size_t bytesRead = sizeOfT * 2;
     for (int j = 0; j < numW; ++j)
     {
+      // write the length of each block in the header
       if (activeWorkers[j] != -1)
       {
-        //  std::cout << "ACTIVE WORKERS:" << activeWorkers[j] << "\n";
         memcpy((ptrHeader + bytesRead), (FilesVector[idFile].arrayOfPointers[j] + sizeOfT), activeWorkers[j] * sizeOfT);
         bytesRead += activeWorkers[j] * sizeOfT;
       }
@@ -291,13 +269,11 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
       }
       return false;
     }
-    //  std::cout << "HEADER:" << "\n";
     //  Write of the workers compressed data
     for (size_t j = 0; j < numW; ++j)
     {
       if (activeWorkers[j] != -1)
       {
-        //  std::cout << "BLOCK SIZE TOTAL:" << compressedByWorkerSize[j] +  sizeOfT * (activeWorkers[j] + 1) << "\n";
         if (fwrite((FilesVector[idFile].arrayOfPointers[j] + sizeOfT * (activeWorkers[j] + 1)), 1, compressedByWorkerSize[j], pOutfile) != compressedByWorkerSize[j])
         {
           if (QUITE_MODE >= 1)
@@ -311,8 +287,6 @@ static inline bool mpiMasterCompressing(size_t i, int numP)
     }
     if (fclose(pOutfile) != 0)
       return false;
-
-    // CLEAN MEMORY
   }
   return true;
 }
@@ -340,8 +314,6 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
   size_t numberOfBlocks;
   memcpy(&numberOfBlocks, ptr + sizeOfT, sizeof(size_t));
 
-  // unsigned char *ptrOut = new unsigned char[uncompressedFileSize];
-
   size_t headerSize = sizeOfT * (numberOfBlocks + 2);
   size_t bytesRead = headerSize;
 
@@ -353,9 +325,6 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
   int sentMessages = 0;
   // We skip the the uncompressed file size and the number of blocks from the header
   int tot = sizeOfT * 2;
-  //  std::cout << "NUMBER OF TASKS: " << numberTasks << "\n";
-  //  std::cout << "NUMBER OF BLOCKS: " << numberOfBlocks << "\n";
-  //  std::cout << "OVERFLOW TASK: " << overflowTasks << "\n";
   if (!workingMaster)
   {
 
@@ -369,6 +338,8 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
       numberOfBlocksForEachWorker[j] = 0;
       displacement[j] = 0;
     }
+
+    // THIS LOOP IS TO SEND THE LENGTH OF EACH COMPRESSED BLOCK TO THE WORKERS
     for (int j = 0; j < numW; ++j)
     {
       if (overflowTasks > 0)
@@ -403,11 +374,6 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
         }
       }
     }
-    //  std::cout << "OVERFLOW TASK: " << overflowTasks << "\n";
-    //  std::cout << "SENT \n";
-    // for (int j = 0; j < numW; ++j)
-    //    std::cout << "Worker: " << j + 1 << "Bytes to send: " << bytesToSendForEachWorker[j] << " Blocks For each worker: " << numberOfBlocksForEachWorker[j] << "DISPLACEMENT :" << displacement[j] <<"\n";
-
     // send to everyworker the chunks of data
     for (int j = 0; j < numW; ++j)
     {
@@ -417,19 +383,15 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
 
     unsigned char *ptrFinal = new unsigned char[uncompressedFileSize + BIGFILE_LOW_THRESHOLD];
     size_t finalSizeOfFile = 0;
-    //  std::cout << "SIZE OF BUFFER RECIVER: " << uncompressedFileSize + BIGFILE_LOW_THRESHOLD << "\n";
-    //  std::cout << "UNCOMPRESSED FILE SIZE: " << uncompressedFileSize << "\n";
     for (int j = 0; j < sentMessages; ++j)
     {
       MPI_Request rq_recv;
       MPI_Status status;
+      // Using the probe the master knows the offset in where put the uncompressed data in the vector
       MPI_Probe(MPI_ANY_SOURCE, idFile, MPI_COMM_WORLD, &status);
 
       int sourceReceived = status.MPI_SOURCE;
       int split = numberOfBlocksForEachWorker[sourceReceived - 1] * BIGFILE_LOW_THRESHOLD;
-      //  std::cout << "-----------------------------" << "\n";
-      //  std::cout << sourceReceived - 1 <<"FORMULONE: " << split * (sourceReceived - 1) << "\n";
-      //  std::cout << sourceReceived <<"SIZE OF COUNTS OF MASTER IN RECEIVE: " << split << "\n";
       MPI_Irecv(ptrFinal + displacement[sourceReceived - 1], split, MPI_UNSIGNED_CHAR, status.MPI_SOURCE, idFile, MPI_COMM_WORLD, &rq_recv);
       // std::cout << "BIP4" << "\n";
       MPI_Wait(&rq_recv, &status);
@@ -437,6 +399,8 @@ static inline bool mpiMasterDecompressing(size_t i, int numP)
       MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
       finalSizeOfFile += countElements;
     }
+
+    // Writing to the file from this point till the end of the function
 
     const std::string infilename(FilesVector[idFile].filename);
     std::string outfilename = infilename.substr(0, infilename.size() - 6);
@@ -486,28 +450,21 @@ struct L_Worker : ff_monode_t<Task_t>
       do
       {
 
+        // Using the probe to get the tag so we can get an estimation of the data to receive
         MPI_Probe(0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
         if (status.MPI_TAG == INT_MAX)
           break;
 
         int mpitag = status.MPI_TAG;
-        //  std::cout << "SIZE OF THE FILE:" << FilesVector[mpitag].size << "\n";
         //  Get an estimate of the data to recive
-
-        // NUMP-1!!!!!!!!!!!
-
         int estimation = FilesVector[mpitag].size / numW + BIGFILE_LOW_THRESHOLD * 2;
-
-        // NUMP-1!!!!!!!!!!!!!!!!
-        //  std::cout << "estimation:" << estimation << "\n";
         unsigned char *ptrIN = new unsigned char[estimation];
         MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
         MPI_Wait(&rq_recv, &status);
         int countElements;
         MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
 
-        //  std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
         size_t idFile = mpitag;
 
         size_t infile_size = countElements;
@@ -515,6 +472,7 @@ struct L_Worker : ff_monode_t<Task_t>
 
         unsigned char *ptr = ptrIN;
 
+        // The data is splitted in blocks and sent to the Right Workers of Fast Flow all2all
         const size_t fullblocks = infile_size / BIGFILE_LOW_THRESHOLD;
         const size_t partialblock = infile_size % BIGFILE_LOW_THRESHOLD;
         size_t numberOfBlocks = fullblocks;
@@ -558,28 +516,26 @@ struct L_Worker : ff_monode_t<Task_t>
       size_t sizeOfT = sizeof(size_t);
       do
       {
-
+        // Using the probe to get the tag so we can get an estimation of the data to receive
         MPI_Probe(0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
         if (status.MPI_TAG == INT_MAX)
           break;
 
         int mpitag = status.MPI_TAG;
-        //  std::cout << "SIZE OF THE FILE:" << FilesVector[mpitag].size << "\n";
         // If it is the first message coming from the master for that specific file
+        // The master will send us the number of compressed blocks with their specific length
         if (FilesVector[mpitag].numBlocks == -1)
         {
           //  Get an estimate of the data to recive
           int idFile = mpitag;
           int estimation = (FilesVector[idFile].size * 3 / BIGFILE_LOW_THRESHOLD + 1) / numW;
           estimation *= sizeOfT;
-          //  std::cout << myId << " estimation:" << estimation << "\n";
           unsigned char *ptrIN = new unsigned char[estimation];
           MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, idFile, MPI_COMM_WORLD, &rq_recv);
           MPI_Wait(&rq_recv, &status);
           int countElements;
           MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-          //  std::cout << "countElements:" << countElements << "\n";
 
           FilesVector[idFile].numBlocks = countElements / sizeOfT;
           FilesVector[idFile].sizeOfBlocks = new size_t[FilesVector[idFile].numBlocks];
@@ -589,26 +545,18 @@ struct L_Worker : ff_monode_t<Task_t>
             // Used to get the exact estimation in the else branch
             FilesVector[idFile].compressedLength += FilesVector[idFile].sizeOfBlocks[j];
           }
-
-          //  std::cout << myId << " Number of blocks Received:" << FilesVector[mpitag].numBlocks << " First size_t block: " << FilesVector[mpitag].sizeOfBlocks[0] << " number of bytes to receive: " << FilesVector[mpitag].compressedLength << "\n";
         }
         else
         {
           int idFile = mpitag;
           int estimation = FilesVector[idFile].compressedLength;
-          //  std::cout << myId << " estimation:" << estimation << "\n";
           unsigned char *ptrDe = new unsigned char[estimation];
-          // std::cout << myId << " estimation:" << estimation << "\n";
           MPI_Irecv(ptrDe, estimation, MPI_UNSIGNED_CHAR, 0, idFile, MPI_COMM_WORLD, &rq_recv);
           MPI_Wait(&rq_recv, &status);
-          // int countElements;
-          // MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-          //  std::cout << myId << " CompressedLength:" << FilesVector[idFile].compressedLength << " counts: " << countElements << "\n";
-
-          // std::cout << myId << " PTR OUT SIZE: " << BIGFILE_LOW_THRESHOLD * FilesVector[idFile].numBlocks << "\n";
           FilesVector[idFile].pointer = new unsigned char[BIGFILE_LOW_THRESHOLD * FilesVector[idFile].numBlocks];
-          // std::cout << myId << " POINTER: " << reinterpret_cast<void *>(FilesVector[idFile].pointer) << "\n";
           size_t bytesRead = 0;
+
+          // Send blocks to the Right Workers of all2all
           for (size_t j = 0; j < FilesVector[idFile].numBlocks; ++j)
           {
             Task_t *t = new Task_t();
@@ -649,9 +597,6 @@ struct R_Worker : ff_minode_t<Task_t>
         if (QUITE_MODE >= 1)
           std::fprintf(stderr, "Failed to compress file in memory\n");
         success = false;
-        // Cleaning memory
-        // unmapFile(ptr, infile_size);
-        // delete[] ptrOut;
         return GO_ON;
       }
       in->cmp_size = estimation;
@@ -689,10 +634,9 @@ struct Gatherer : ff_minode_t<Task_t>
       FilesVector[idFile].compressedLength += in->cmp_size;
 
       int val = vectorOfCounters[idFile]++;
-
+      // When we have all blocks we send the data
       if (val >= in->nblocks - 1)
       {
-
         // WRITE TO MASTER
         size_t sizeOfT = sizeof(size_t);
         size_t numberOfBlocks = in->nblocks;
@@ -707,37 +651,31 @@ struct Gatherer : ff_minode_t<Task_t>
           tot += FilesVector[idFile].sizeOfBlocks[i];
         }
         MPI_Request rq_send;
-        //  std::cout << "SONO: " << myId << "SENDING: " << tot << "SIZE OF PTR : " << (sizeOfT * (in->nblocks + 1) + FilesVector[idFile].compressedLength) << "\n";
         MPI_Isend(ptrToSend, tot, MPI_UNSIGNED_CHAR, 0, idFile, MPI_COMM_WORLD, &rq_send);
         FilesVector[idFile].pointer = ptrToSend;
-        /* //  std::cout << "SONO: " << myId << "HO COMPRESSO:" << "\n";
         for (int i = 0; i < in->nblocks; ++i)
-          //  std::cout << FilesVector[idFile].sizeOfBlocks[i] << "\n"; */
-        // Cleaning memory
-        for (size_t i = 0; i < in->nblocks; ++i)
-        {
-          delete FilesVector[idFile].arrayOfPointers[i];
-        }
+          // Cleaning memory
+          for (size_t i = 0; i < in->nblocks; ++i)
+          {
+            delete FilesVector[idFile].arrayOfPointers[i];
+          }
         delete FilesVector[idFile].sizeOfBlocks;
       }
     }
     else
     {
       size_t idFile = in->idFile;
-      //  std::cout << myId << " uncompressedLength:" << FilesVector[idFile].uncompressedLength << "\n";
       FilesVector[idFile].uncompressedLength += in->cmp_size;
 
       int val = vectorOfCounters[idFile]++;
+      // When we have all blocks we send the data
+
       if (val >= in->nblocks - 1)
       {
         MPI_Request rq_send;
         MPI_Status status;
         // Send BLOCK
-        // std::cout << myId << "PTR OUT: " << in->ptrOut << "\n";
         MPI_Isend(FilesVector[idFile].pointer, FilesVector[idFile].uncompressedLength, MPI_UNSIGNED_CHAR, 0, idFile, MPI_COMM_WORLD, &rq_send);
-        // std::cout << myId << " SENT!: uncompressedLength:" << FilesVector[idFile].uncompressedLength << "\n";
-        // std::cout << myId << " !!!SENT!!! POINTER: " << reinterpret_cast<void *>(FilesVector[idFile].pointer) << "\n";
-        // find this to delete
         MPI_Wait(&rq_send, &status);
       }
     }
@@ -746,8 +684,7 @@ struct Gatherer : ff_minode_t<Task_t>
 };
 static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
 {
-  // This part read the first message where the length of each file is specified
-  //---------------
+  // Each worker has a all to all inside
   unsigned long long array[MAX_FILES_IN_DIRECTORY];
   MPI_Status status;
   MPI_Status statusProbe;
@@ -762,12 +699,6 @@ static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
     FilesVector.emplace_back("a", array[i]);
     vectorOfCounters.emplace_back(0);
   }
-
-  /* for (int i = 0; i < FilesVector.size(); ++i)
-  {
-    //  std::cout << FilesVector[i].size << "\n";
-  } */
-  //-----------------
 
   int countElements;
 
@@ -790,7 +721,6 @@ static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
     error("running a2a\n");
     return -1;
   }
-  // std::cout << myId << "FINE" << "\n";
 
   // delete all the allocated memory
   for (int i = 0; i < FilesVector.size(); ++i)
@@ -798,31 +728,6 @@ static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
     delete FilesVector[i].pointer;
   }
 
-  //  std::cout << ": MY ID IS :" << myId << "\n";
-  //  std::cout << ": Number Of Files:" << numberOfFiles << "\n";
-  //  std::cout << ": sizeFile:" << array[0] << "\n";
-  /* do
-  {
-
-    MPI_Probe(0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-
-    if (status.MPI_TAG == INT_MAX)
-      break;
-    //  std::cout << "SIZE OF THE FILE:" << array[status.MPI_TAG] << "\n";
-    // Get an estimate of the data to recive
-    int estimation = array[status.MPI_TAG] / numP + BIGFILE_LOW_THRESHOLD;
-    //  std::cout << "estimation:" << estimation << "\n";
-    unsigned char *ptrIN = new unsigned char[estimation];
-    MPI_Irecv(ptrIN, estimation, MPI_UNSIGNED_CHAR, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &rq_recv);
-    MPI_Wait(&rq_recv, &status);
-    MPI_Get_count(&status, MPI_UNSIGNED_CHAR, &countElements);
-
-    //  std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
-
-    //  std::cout << myId << "RECIVED: " << ptrIN[0] << " MY COUNT IS :" << countElements << "\n";
-  } while (status.MPI_TAG != INT_MAX);
-
-  //  std::cout << myId << "FINE" << "\n"; */
   return true;
 }
 int main(int argc, char *argv[])
@@ -875,27 +780,10 @@ int main(int argc, char *argv[])
 
   struct stat statbuf;
   bool dir = false;
-  // std::vector<FileStruct> FilesVector;
 
   // Handle of the master
   if (myId == 0)
   {
-    /* int world_size;
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
-
-    // Get the rank of the process
-    int world_rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
-
-    // Get the name of the processor
-    char processor_name[MPI_MAX_PROCESSOR_NAME];
-    int name_len;
-    MPI_Get_processor_name(processor_name, &name_len);
-
-    // Print off a hello world message
-    printf("Hello world from processor %s, rank %d out of %d processors\n", processor_name, world_rank, world_size); */
-    
-
     if (stat(argv[2], &statbuf) == -1)
     {
       perror("stat");
@@ -965,8 +853,6 @@ int main(int argc, char *argv[])
     {
       MPI_Isend(NULL, 0, MPI_UNSIGNED_CHAR, j % (numP - 1) + 1, INT_MAX, MPI_COMM_WORLD, &rq_end[j]);
     }
-    // sleep(10);
-    //  MPI_Waitall(numP,rq_end,rq_end_status);
   }
   else // Handle the workers
   {
