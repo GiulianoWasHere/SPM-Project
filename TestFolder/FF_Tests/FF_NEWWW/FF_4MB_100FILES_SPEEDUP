@@ -1,187 +1,193 @@
 NUMBER OF FILES: 100 EACH: 20 MB
 LWORKERS: 2 RWORKERS: 1
 COMPRESSION:
-Time FastFlow: 153921 milliseconds
+Time FastFlow: 76536 milliseconds
 DECOMPRESSION:
-Time FastFlow: 37548 milliseconds
+Time FastFlow: 18626 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 2
 COMPRESSION:
-Time FastFlow: 77214 milliseconds
+Time FastFlow: 38191 milliseconds
 DECOMPRESSION:
-Time FastFlow: 18806 milliseconds
+Time FastFlow: 9346 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 3
 COMPRESSION:
-Time FastFlow: 51522 milliseconds
+Time FastFlow: 25598 milliseconds
 DECOMPRESSION:
-Time FastFlow: 12560 milliseconds
+Time FastFlow: 6256 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 4
 COMPRESSION:
-Time FastFlow: 38505 milliseconds
+Time FastFlow: 19317 milliseconds
 DECOMPRESSION:
-Time FastFlow: 9435 milliseconds
+Time FastFlow: 4718 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 5
 COMPRESSION:
-Time FastFlow: 31000 milliseconds
+Time FastFlow: 15319 milliseconds
 DECOMPRESSION:
-Time FastFlow: 7593 milliseconds
+Time FastFlow: 3775 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 6
 COMPRESSION:
-Time FastFlow: 25824 milliseconds
+Time FastFlow: 12867 milliseconds
 DECOMPRESSION:
-Time FastFlow: 6344 milliseconds
+Time FastFlow: 3165 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 7
 COMPRESSION:
-Time FastFlow: 22130 milliseconds
+Time FastFlow: 11860 milliseconds
 DECOMPRESSION:
-Time FastFlow: 5451 milliseconds
+Time FastFlow: 2851 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 8
 COMPRESSION:
-Time FastFlow: 19382 milliseconds
+Time FastFlow: 9694 milliseconds
 DECOMPRESSION:
-Time FastFlow: 4767 milliseconds
+Time FastFlow: 2391 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 9
 COMPRESSION:
-Time FastFlow: 17280 milliseconds
+Time FastFlow: 8588 milliseconds
 DECOMPRESSION:
-Time FastFlow: 4236 milliseconds
+Time FastFlow: 2124 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 10
 COMPRESSION:
-Time FastFlow: 15528 milliseconds
+Time FastFlow: 7762 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3827 milliseconds
+Time FastFlow: 1920 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 11
 COMPRESSION:
-Time FastFlow: 14117 milliseconds
+Time FastFlow: 7190 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3524 milliseconds
+Time FastFlow: 1755 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 12
 COMPRESSION:
-Time FastFlow: 12979 milliseconds
+Time FastFlow: 6553 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3383 milliseconds
+Time FastFlow: 1622 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 13
 COMPRESSION:
-Time FastFlow: 12004 milliseconds
+Time FastFlow: 5988 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3199 milliseconds
+Time FastFlow: 1492 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 14
 COMPRESSION:
-Time FastFlow: 11139 milliseconds
+Time FastFlow: 5894 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2820 milliseconds
+Time FastFlow: 1452 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 15
 COMPRESSION:
-Time FastFlow: 15477 milliseconds
+Time FastFlow: 7585 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3493 milliseconds
+Time FastFlow: 1742 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 16
 COMPRESSION:
-Time FastFlow: 14478 milliseconds
+Time FastFlow: 6878 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3349 milliseconds
+Time FastFlow: 1601 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 17
 COMPRESSION:
-Time FastFlow: 15280 milliseconds
+Time FastFlow: 7583 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3192 milliseconds
+Time FastFlow: 1597 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 18
 COMPRESSION:
-Time FastFlow: 14509 milliseconds
+Time FastFlow: 7239 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3353 milliseconds
+Time FastFlow: 1519 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 19
 COMPRESSION:
-Time FastFlow: 13775 milliseconds
+Time FastFlow: 6956 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3278 milliseconds
+Time FastFlow: 1456 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 20
 COMPRESSION:
-Time FastFlow: 13050 milliseconds
+Time FastFlow: 6594 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2763 milliseconds
+Time FastFlow: 1385 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 21
 COMPRESSION:
-Time FastFlow: 12525 milliseconds
+Time FastFlow: 6514 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3121 milliseconds
+Time FastFlow: 1366 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 22
 COMPRESSION:
-Time FastFlow: 11908 milliseconds
+Time FastFlow: 6024 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2596 milliseconds
+Time FastFlow: 1276 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 23
 COMPRESSION:
-Time FastFlow: 11451 milliseconds
+Time FastFlow: 5806 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2975 milliseconds
+Time FastFlow: 1235 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 24
 COMPRESSION:
-Time FastFlow: 11016 milliseconds
+Time FastFlow: 5446 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2995 milliseconds
+Time FastFlow: 1166 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 25
 COMPRESSION:
-Time FastFlow: 10572 milliseconds
+Time FastFlow: 5212 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2356 milliseconds
+Time FastFlow: 1134 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 26
 COMPRESSION:
-Time FastFlow: 10212 milliseconds
+Time FastFlow: 5084 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2313 milliseconds
+Time FastFlow: 1087 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 27
 COMPRESSION:
-Time FastFlow: 9738 milliseconds
+Time FastFlow: 4867 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2242 milliseconds
+Time FastFlow: 1099 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 28
 COMPRESSION:
-Time FastFlow: 9474 milliseconds
+Time FastFlow: 4932 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2186 milliseconds
+Time FastFlow: 1051 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 29
 COMPRESSION:
-Time FastFlow: 9102 milliseconds
+Time FastFlow: 4701 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2343 milliseconds
+Time FastFlow: 1009 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 30
 COMPRESSION:
-Time FastFlow: 8779 milliseconds
+Time FastFlow: 4527 milliseconds
 DECOMPRESSION:
-Time FastFlow: 2103 milliseconds
+Time FastFlow: 980 milliseconds
 -----------------------
 LWORKERS: 2 RWORKERS: 31
 COMPRESSION:
-Time FastFlow: 13255 milliseconds
+Time FastFlow: 6533 milliseconds
 DECOMPRESSION:
-Time FastFlow: 3113 milliseconds
+Time FastFlow: 1527 milliseconds
+-----------------------
+LWORKERS: 2 RWORKERS: 32
+COMPRESSION:
+Time FastFlow: 6110 milliseconds
+DECOMPRESSION:
+Time FastFlow: 1468 milliseconds
 -----------------------
