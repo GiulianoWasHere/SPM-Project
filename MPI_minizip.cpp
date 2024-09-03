@@ -701,7 +701,7 @@ static inline bool mpiWorker(int myId, int numP, int numberOfWorkers)
   }
 
   int countElements;
-
+  //Creation of All to All
   std::vector<ff_node *> LW;
   std::vector<ff_node *> RW;
 

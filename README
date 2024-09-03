@@ -1,2 +1,11 @@
-TO DO
+# Compile
 
+To compile simply execute the comand Make in...
+
+# Run the test
+
+To run the test go to the directory scripts using the comand `cd scripts`.
+
+Using `sbatch ./[NameOfTheScript]`is possible to execute the script in the cluster.
+
+In local just `./[NameOfTheScript]`.
